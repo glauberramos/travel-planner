@@ -5,6 +5,9 @@ const TravelBoard = ({travels}) => {
   const travelListItems = travels.map((travel, key) => {
     return (
       <div key={travel.id}>
+        { travel.destination }
+        { travel.startDate }
+        { travel.endDate }
         { travel.comments }
       </div>
     );
