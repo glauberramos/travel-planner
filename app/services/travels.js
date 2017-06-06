@@ -7,6 +7,11 @@ export default () => {
     getTravels: () => client.request({
       method: 'GET',
       url: '/travels'
+    }),
+    createTravel: ({ data }) => client.request({
+      method: 'POST',
+      url: `/travels`,
+      data
     })
   };
 };

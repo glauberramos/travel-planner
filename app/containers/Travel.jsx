@@ -2,12 +2,15 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import TravelBoard from '../components/TravelBoard';
+import TravelBox from '../components/TravelBox';
+import { createTravel } from '../actions/travels';
 
 class Travel extends Component {
   render() {
-    const { travels } = this.props;
+    const { travels, createTravel } = this.props;
     return (
       <div>
+        <TravelBox createTravel={ createTravel } />
         <TravelBoard travels={ travels } />
       </div>
     );
@@ -15,7 +18,8 @@ class Travel extends Component {
 }
 
 Travel.propTypes = {
-  travels: PropTypes.array.isRequired
+  travels: PropTypes.array.isRequired,
+  createTravel: PropTypes.func.isRequired
 };
 
 function mapStateToProps(state) {
@@ -24,6 +28,4 @@ function mapStateToProps(state) {
   };
 }
 
-// Read more about where to place `connect` here:
-// https://github.com/rackt/react-redux/issues/75#issuecomment-135436563
-export default connect(mapStateToProps, { })(Travel);
+export default connect(mapStateToProps, { createTravel })(Travel);

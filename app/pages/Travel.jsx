@@ -17,7 +17,7 @@ class Travel extends Component {
 
   pageMeta = () => {
     return [
-      { name: 'description', content: 'A reactGo example of a traveling page' }
+      { name: 'description', content: 'Travelling page' }
     ];
   };
 

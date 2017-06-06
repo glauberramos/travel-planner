@@ -63,6 +63,7 @@ export default (app) => {
 
   if (travelsController) {
     app.get('/travels', loggedIn, travelsController.all);
+    app.post('/travels', travelsController.add);
   } else {
     console.warn(unsupportedMessage('travels routes'));
   }
