@@ -2,6 +2,7 @@ import Sequelize from 'sequelize';
 import sequelizeConfig from '../sequelize_config';
 import { ENV } from '../../../../config/env';
 import tokenModel from './tokens';
+import travelModel from './travels';
 import topicModel from './topics';
 import userModel from './users';
 
@@ -15,6 +16,7 @@ const sequelize = dbUrl ? new Sequelize(dbUrl) : new Sequelize(config.database, 
 db.Token = sequelize.import('Token', tokenModel);
 db.Topic = sequelize.import('Topic', topicModel);
 db.User = sequelize.import('User', userModel);
+db.User = sequelize.import('Travel', travelModel);
 
 Object.keys(db).forEach((key) => {
   const model = db[key];
@@ -24,4 +26,3 @@ Object.keys(db).forEach((key) => {
 });
 
 export { db as Models, sequelize };
-

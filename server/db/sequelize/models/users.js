@@ -56,6 +56,9 @@ export default (sequelize, DataTypes) => {
     },
     google: {
       type: DataTypes.STRING
+    },
+    role: {
+      type: DataTypes.STRING
     }
   }, {
     timestamps: false,
@@ -65,6 +68,10 @@ export default (sequelize, DataTypes) => {
         User.hasMany(models.Token, {
           foreignKey: 'userId'
         });
+        
+        User.hasMany(models.Travel, {
+          foreignKey: 'userId'
+        })
       }
     },
 
