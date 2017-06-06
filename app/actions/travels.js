@@ -7,7 +7,9 @@ function createTravelRequest(data) {
   return {
     type: types.CREATE_TRAVEL_REQUEST,
     destination: data.destination,
-    comments: data.comments
+    comments: data.comments,
+    startDate: data.startDate,
+    endDate: data.endDate
   };
 }
 
@@ -24,12 +26,10 @@ function createTravelFailure(data) {
   };
 }
 
-export function createTravel(destination, comments) {
+export function createTravel(destination, comments, startDate, endDate) {
   return (dispatch, getState) => {
-    if (destination.trim().length <= 0) return;
-
     const { travel } = getState();
-    const data = { destination, comments };
+    const data = { destination, comments, startDate, endDate };
 
     dispatch(createTravelRequest(data));
 

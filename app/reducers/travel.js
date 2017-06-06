@@ -8,7 +8,9 @@ const travel = (
     case types.CREATE_TRAVEL_REQUEST:
       return {
         destination: action.destination,
-        comments: action.comments
+        comments: action.comments,
+        startDate: action.startDate,
+        endDate: action.endDate
       };
     default:
       return state;

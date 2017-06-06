@@ -17,7 +17,6 @@ export function all(req, res) {
 }
 
 export function add(req, res) {
-  console.log('request body: ', req.body);
   req.body.userId = req.user.id;
   Travel.create(req.body).then(() => {
     res.status(200).send('OK');

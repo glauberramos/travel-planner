@@ -8,10 +8,7 @@ export default class TravelBox extends Component {
     super(props);
     this.onSave = this.onSave.bind(this);
     this.onKeyDown = this.onKeyDown.bind(this);
-    this.state = {
-      destination: '',
-      comments: ''
-    }
+    this.state = { destination: '', comments: '', startDate: '', endDate: '' }
   }
 
   updateDestination(event) {
@@ -22,9 +19,16 @@ export default class TravelBox extends Component {
     this.setState({ comments: event.target.value });
   }
 
+  updateStartDate(event) {
+    this.setState({ startDate: event.target.value });
+  }
+
+  updateEndDate(event) {
+    this.setState({ endDate: event.target.value });
+  }
+
   onSave() {
-    console.log('comments: ', this.state.comments);
-    this.props.createTravel(this.state.destination, this.state.comments);
+    this.props.createTravel(this.state.destination, this.state.comments, this.state.startDate, this.state.endDate);
   }
 
   onKeyDown(event) {
@@ -46,6 +50,16 @@ export default class TravelBox extends Component {
           onKeyDown={this.onKeyDown.bind(this)}
           onChange={this.updateComments.bind(this)}
           value={this.state.comments} />
+        <input
+          type="date"
+          onKeyDown={this.onKeyDown.bind(this)}
+          onChange={this.updateStartDate.bind(this)}
+          value={this.state.startDate} />
+        <input
+          type="date"
+          onKeyDown={this.onKeyDown.bind(this)}
+          onChange={this.updateEndDate.bind(this)}
+          value={this.state.endDate} />
       </div>
     );
   }
