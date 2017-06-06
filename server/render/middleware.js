@@ -4,6 +4,7 @@ import configureStore from '../../app/store/configureStore';
 import * as types from '../../app/types';
 import pageRenderer from './pageRenderer';
 import fetchDataForRoute from '../../app/utils/fetchDataForRoute';
+import axios from 'axios';
 
 /*
  * Export render function to be used in server/config/routes.js
@@ -44,6 +45,23 @@ export default function render(req, res) {
    * If all three parameters are `undefined`, this means that there was no route found matching the
    * given location.
    */
+
+  function ssrAuth(cookie) {
+    if (arguments.length === 0) {
+      axios.interceptors.request.handlers = [];
+    } else {
+      axios.interceptors.request.use(function(config) {
+        config.headers['cookie'] = cookie;
+      }, function(error) {
+        return Promise.reject(error);
+      });
+    }
+  }
+
+  if (authenticated) {
+    ssrAuth(req.headers.cookie);
+  }
+
   match({routes, location: req.url}, (err, redirect, props) => {
     if (err) {
       res.status(500).json(err);
@@ -54,6 +72,9 @@ export default function render(req, res) {
       // promises to resolve before returning to browser
       store.dispatch({ type: types.CREATE_REQUEST });
       fetchDataForRoute(props)
+        .then((data) => {
+           authenticated ? ssrAuth() : null;
+        })
         .then((data) => {
           store.dispatch({ type: types.REQUEST_SUCCESS, data });
           const html = pageRenderer(store, props);

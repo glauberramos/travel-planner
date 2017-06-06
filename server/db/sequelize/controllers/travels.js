@@ -4,7 +4,11 @@ import { Models, sequelize } from '../models';
 const Travel = Models.Travel;
 
 export function all(req, res) {
-  Travel.findAll().then((travels) => {
+  Travel.findAll({
+    where: {
+      userId: (req.user && req.user.id) || 9999
+    }
+  }).then((travels) => {
     res.json(travels);
   }).catch((err) => {
     console.log(err);

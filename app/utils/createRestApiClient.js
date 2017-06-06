@@ -18,4 +18,3 @@ const createRestApiClient = () => ({
 });
 
 export default createRestApiClient;
-

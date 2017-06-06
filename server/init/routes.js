@@ -62,7 +62,7 @@ export default (app) => {
   }
 
   if (travelsController) {
-    app.get('/travels', travelsController.all);
+    app.get('/travels', loggedIn, travelsController.all);
   } else {
     console.warn(unsupportedMessage('travels routes'));
   }
