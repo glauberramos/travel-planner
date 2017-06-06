@@ -5,7 +5,6 @@ import classNames from 'classnames/bind';
 import { connect } from 'react-redux';
 import { manualLogin, signUp, toggleLoginMode } from '../actions/users';
 import styles from '../css/components/login';
-import hourGlassSvg from '../images/hourglass.svg';
 
 const cx = classNames.bind(styles);
 
@@ -71,7 +70,6 @@ class LoginOrRegister extends Component {
       >
         <div className={cx('container')}>
           { this.renderHeader() }
-          <img className={cx('loading')} alt="loading" src={hourGlassSvg} />
           <div className={cx('email-container')}>
             <form onSubmit={this.handleOnSubmit}>
               <input
@@ -131,4 +129,3 @@ function mapStateToProps({user}) {
 // It does not modify the component class passed to it
 // Instead, it returns a new, connected component class, for you to use.
 export default connect(mapStateToProps, { manualLogin, signUp, toggleLoginMode })(LoginOrRegister);
-
