@@ -16,7 +16,7 @@ const sequelize = dbUrl ? new Sequelize(dbUrl) : new Sequelize(config.database, 
 db.Token = sequelize.import('Token', tokenModel);
 db.Topic = sequelize.import('Topic', topicModel);
 db.User = sequelize.import('User', userModel);
-db.User = sequelize.import('Travel', travelModel);
+db.Travel = sequelize.import('Travel', travelModel);
 
 Object.keys(db).forEach((key) => {
   const model = db[key];
