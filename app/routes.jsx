@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 import { fetchVoteData } from './fetch-data';
 import { fetchTravelData } from './fetch-travel-data';
-import { App, Vote, Dashboard, LoginOrRegister, Travel } from './pages';
+import { App, Vote, LoginOrRegister, Travel } from './pages';
 
 /*
  * @param {Redux Store}
@@ -35,7 +35,6 @@ export default (store) => {
       <IndexRoute component={Vote} fetchData={fetchVoteData} />
       <Route path="travelBoard" component={Travel} fetchData={fetchTravelData} />
       <Route path="login" component={LoginOrRegister} onEnter={redirectAuth} />
-      <Route path="dashboard" component={Dashboard} onEnter={requireAuth} />
     </Route>
   );
 };

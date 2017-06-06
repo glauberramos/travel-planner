@@ -22,7 +22,6 @@ const Navigation = ({ user, logOut }) => {
           ) : (
             <Link className={cx('item')} to="/login">Log in</Link>
           )}
-        <Link className={cx('item')} to="/dashboard">Dashboard</Link>
         <Link to="/travelBoard" className={cx('item')}>Travels</Link>
       </nav>
     );
