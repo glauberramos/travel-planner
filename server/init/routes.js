@@ -50,8 +50,8 @@ export default (app) => {
     } else {
         res.redirect('/login');
     }
-}
-  // topic routes
+  }
+
   if (topicsController) {
     app.get('/topic', topicsController.all);
     app.post('/topic/:id', topicsController.add);
@@ -62,8 +62,9 @@ export default (app) => {
   }
 
   if (travelsController) {
-    app.get('/travels', loggedIn, travelsController.all);
-    app.post('/travels', travelsController.add);
+    app.get('/travel', loggedIn, travelsController.all);
+    app.post('/travel', travelsController.add);
+    app.delete('/travel/:id', travelsController.remove);
   } else {
     console.warn(unsupportedMessage('travels routes'));
   }

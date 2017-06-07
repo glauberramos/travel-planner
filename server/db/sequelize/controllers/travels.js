@@ -26,7 +26,17 @@ export function add(req, res) {
   });
 }
 
+export function remove(req, res) {
+  Travel.destroy({ where: { id: req.params.id } }).then(() => {
+    res.status(200).send('Removed Successfully');
+  }).catch((err) => {
+    console.log(err);
+    res.status(500).send('We failed to delete for some reason');
+  });
+}
+
 export default {
   all,
-  add
+  add,
+  remove
 };
