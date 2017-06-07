@@ -24,15 +24,14 @@ export default class UserItem extends Component {
   }
 
   onDelete() {
-    // this.props.Travel(this.props.id);
+    // this.props.deleteUser(this.props.id);
   }
 
   onUpdate() {
-    // this.props.updateTravel(this.props.id,
-    //   this.state.destination,
-    //   this.state.comments,
-    //   this.state.startDate,
-    //   this.state.endDate);
+    // this.props.updateUser(this.props.id,
+    //   this.state.email,
+    //   this.state.role,
+    //   this.state.password);
   }
 
   render() {

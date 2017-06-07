@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import UserCreation from '../components/UserCreation';
 import UserList from '../components/UserList';
+import { signUp } from '../actions/users';
 
 class User extends Component {
   render() {
     return (
-      <UserList users={ this.props.users } />
+      <div>
+        <UserCreation createUser={ signUp } />
+        <UserList users={ this.props.users } />
+      </div>
     );
   }
 }
