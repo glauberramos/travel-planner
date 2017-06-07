@@ -24,9 +24,9 @@ const TravelItem = ({ id, destination, startDate, endDate, comments, deleteTrave
 TravelItem.propTypes = {
   id: PropTypes.string.isRequired,
   destination: PropTypes.string.isRequired,
-  startDate: Proptypes.date.isRequired,
-  endDate: Proptypes.date.isRequired,
-  comments: Proptypes.string.isRequired,
+  startDate: PropTypes.date.isRequired,
+  endDate: PropTypes.date.isRequired,
+  comments: PropTypes.string.isRequired,
   deleteTravel: PropTypes.func.isRequired
 };
 
