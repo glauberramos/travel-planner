@@ -12,7 +12,7 @@ const travelsController = controllers && controllers.travels;
 export default (app) => {
   if (usersController) {
     app.post('/sessions', usersController.login);
-    app.post('/users', usersController.signUp);
+    app.post('/signUp', usersController.signUp);
     app.delete('/sessions', usersController.logout);
   } else {
     console.warn(unsupportedMessage('users routes'));
