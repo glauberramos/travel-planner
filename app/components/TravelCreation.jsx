@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const ENTER_KEY_CODE = 13;
 
-export default class TravelBox extends Component {
+export default class TravelCreation extends Component {
   constructor(props) {
     super(props);
     this.state = { destination: '', comments: '', startDate: '', endDate: '' }
@@ -56,6 +56,6 @@ export default class TravelBox extends Component {
   }
 };
 
-TravelBox.propTypes = {
+TravelCreation.propTypes = {
   createTravel: PropTypes.func.isRequired
 };
