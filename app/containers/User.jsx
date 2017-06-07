@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import UserCreation from '../components/UserCreation';
 import UserList from '../components/UserList';
-import { createUser, deleteUser } from '../actions/users';
+import { createUser, deleteUser, updateUser } from '../actions/users';
 
 class User extends Component {
   render() {
@@ -11,7 +11,8 @@ class User extends Component {
       <div>
         <UserCreation createUser={ this.props.createUser } />
         <UserList users={ this.props.users }
-          deleteUser={ this.props.deleteUser } />
+          deleteUser={ this.props.deleteUser }
+          updateUser={ this.props.updateUser } />
       </div>
     );
   }
@@ -19,6 +20,9 @@ class User extends Component {
 
 User.propTypes = {
   users: PropTypes.array.isRequired,
+  createUser: PropTypes.func.isRequired,
+  deleteUser: PropTypes.func.isRequired,
+  updateUser: PropTypes.func.isRequired
 };
 
 function mapStateToProps(state) {
@@ -27,4 +31,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { createUser, deleteUser })(User);
+export default connect(mapStateToProps, { createUser, deleteUser, updateUser })(User);

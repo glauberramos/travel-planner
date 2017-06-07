@@ -29,10 +29,10 @@ export default class UserItem extends Component {
   }
 
   onUpdate() {
-    // this.props.updateUser(this.props.id,
-    //   this.state.email,
-    //   this.state.role,
-    //   this.state.password);
+    this.props.updateUser(this.props.id,
+      this.state.email,
+      this.state.role,
+      this.state.password);
   }
 
   render() {

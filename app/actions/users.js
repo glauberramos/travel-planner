@@ -124,3 +124,17 @@ export function deleteUser(id) {
       .then(() => dispatch(destroy(id)));
   };
 }
+
+export function updateUser(id, email, role, password) {
+  return (dispatch) => {
+    return userService().updateUser({
+      id,
+      data: {
+        email: email,
+        role: role,
+        password: password
+      }
+    })
+      .catch(() => dispatch(signUpError({id, error: 'Oops! Something went wrong and we couldn\'t edit user'})));
+  };
+}

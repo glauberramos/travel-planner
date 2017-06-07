@@ -63,10 +63,23 @@ export function remove(req, res) {
   });
 }
 
+export function update(req, res) {
+  const query = { id: req.params.id };
+  const data = req.body;
+
+  User.update(data, { where: query }).then(() => {
+    res.status(200).send('Updated successfully');
+  }).catch((err) => {
+    console.log(err);
+    res.status(500).send('We failed to save for some reason');
+  });
+}
+
 export default {
   login,
   logout,
   signUp,
   all,
-  remove
+  remove,
+  update
 };

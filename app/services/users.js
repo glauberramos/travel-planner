@@ -11,6 +11,11 @@ export default () => {
     deleteUser: ({ id }) => client.request({
       method: 'DELETE',
       url: `/user/${id}`
+    }),
+    updateUser: ({ id, data }) => client.request({
+      method: 'PUT',
+      url: `/user/${id}`,
+      data
     })
   };
 };

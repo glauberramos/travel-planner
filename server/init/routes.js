@@ -16,6 +16,7 @@ export default (app) => {
     app.post('/signUp', usersController.signUp);
     app.get('/user', usersController.all);
     app.delete('/user/:id', usersController.remove);
+    app.put('/user/:id', usersController.update);
   } else {
     console.warn(unsupportedMessage('users routes'));
   }
