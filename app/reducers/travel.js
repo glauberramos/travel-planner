@@ -24,7 +24,7 @@ const travels = (
 ) => {
   switch (action.type) {
     case types.REQUEST_SUCCESS:
-      if (action.data) return action.data;
+      if (action.data && Array.isArray(action.data)) return action.data;
       return state;
     case types.CREATE_TRAVEL_REQUEST:
       return [...state, travel(undefined, action)];

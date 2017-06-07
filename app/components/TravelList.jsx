@@ -18,7 +18,7 @@ export default class TravelList extends Component {
 
   render() {
     const travelListItems = this.props.travels.filter(travel => {
-      return travel.destination.includes(this.state.destinationFilter);
+      return travel.destination && travel.destination.includes(this.state.destinationFilter);
       }).map((travel, key) => {
         return (
           <TravelItem

@@ -29,7 +29,7 @@ export default class UserCreation extends Component {
   render() {
     const roleOptions = Object.keys(UserRoles).map((role) => {
       return (
-        <option value={ UserRoles[role] }>{ role }</option>
+        <option key={role} value={ UserRoles[role] }>{ role }</option>
       )
     });
 
