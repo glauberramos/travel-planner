@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { UserRoles } from '../utils/UserRoles';
 
 const ENTER_KEY_CODE = 13;
 
@@ -26,16 +27,21 @@ export default class UserCreation extends Component {
   }
 
   render() {
+    const roleOptions = Object.keys(UserRoles).map((role) => {
+      return (
+        <option value={ UserRoles[role] }>{ role }</option>
+      )
+    });
+
     return (
       <div>
         <input
           placeholder="Email"
           onChange={this.updateEmail.bind(this)}
           value={this.state.email} />
-        <input
-          placeholder="Role"
-          onChange={this.updateRole.bind(this)}
-          value={this.state.role} />
+        <select onChange={this.updateRole.bind(this)}>
+          { roleOptions }
+        </select>
         <input
           type="password"
           onChange={this.updatePassword.bind(this)}
