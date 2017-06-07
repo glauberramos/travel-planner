@@ -3,18 +3,22 @@ import { Models } from '../models';
 
 const User = Models.User;
 
-/**
- * POST /login
- */
+export function all(req, res) {
+  User.findAll().then((users) => {
+    res.json(users);
+  }).catch((err) => {
+    console.log(err);
+    res.status(500).send('Error in first query');
+  });
+}
+
 export function login(req, res, next) {
-  // Do email and password validation for the server
   passport.authenticate('local', (authErr, user, info) => {
     if (authErr) return next(authErr);
     if (!user) {
       return res.sendStatus(401);
     }
-    // Passport exposes a login() function on req (also aliased as
-    // logIn()) that can be used to establish a login session
+
     return req.logIn(user, (loginErr) => {
       if (loginErr) return res.sendStatus(401);
       return res.sendStatus(200);
@@ -22,18 +26,11 @@ export function login(req, res, next) {
   })(req, res, next);
 }
 
-/**
- * POST /logout
- */
 export function logout(req, res) {
   req.logout();
   res.sendStatus(200);
 }
 
-/**
- * POST /signup
- * Create a new local account
- */
 export function signUp(req, res, next) {
   User.findOne({ where: { email: req.body.email } }).then((existingUser) => {
     if (existingUser) {
@@ -59,5 +56,6 @@ export function signUp(req, res, next) {
 export default {
   login,
   logout,
-  signUp
+  signUp,
+  all
 };

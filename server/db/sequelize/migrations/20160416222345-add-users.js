@@ -14,26 +14,6 @@ module.exports = {
         password: {
           type: DataTypes.STRING
         },
-        name: {
-          type: DataTypes.STRING,
-          defaultValue: ''
-        },
-        gender: {
-          type: DataTypes.STRING,
-          defaultValue: ''
-        },
-        location: {
-          type: DataTypes.STRING,
-          defaultValue: ''
-        },
-        website: {
-          type: DataTypes.STRING,
-          defaultValue: ''
-        },
-        picture: {
-          type: DataTypes.STRING,
-          defaultValue: ''
-        },
         resetPasswordToken: {
           type: DataTypes.STRING
         },

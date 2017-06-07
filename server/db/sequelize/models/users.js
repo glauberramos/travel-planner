@@ -28,26 +28,6 @@ export default (sequelize, DataTypes) => {
     password: {
       type: DataTypes.STRING
     },
-    name: {
-      type: DataTypes.STRING,
-      defaultValue: ''
-    },
-    gender: {
-      type: DataTypes.STRING,
-      defaultValue: ''
-    },
-    location: {
-      type: DataTypes.STRING,
-      defaultValue: ''
-    },
-    website: {
-      type: DataTypes.STRING,
-      defaultValue: ''
-    },
-    picture: {
-      type: DataTypes.STRING,
-      defaultValue: ''
-    },
     resetPasswordToken: {
       type: DataTypes.STRING
     },
@@ -81,13 +61,7 @@ export default (sequelize, DataTypes) => {
         return {
           id: this.id,
           email: this.email,
-          profile: {
-            name: this.name,
-            gender: this.gender,
-            location: this.location,
-            website: this.website,
-            picture: this.picture
-          }
+          role: this.role
         };
       }
     }
