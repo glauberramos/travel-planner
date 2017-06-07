@@ -3,14 +3,15 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import UserCreation from '../components/UserCreation';
 import UserList from '../components/UserList';
-import { signUp } from '../actions/users';
+import { signUp, deleteUser } from '../actions/users';
 
 class User extends Component {
   render() {
     return (
       <div>
-        <UserCreation createUser={ signUp } />
-        <UserList users={ this.props.users } />
+        <UserCreation createUser={ this.props.signUp } />
+        <UserList users={ this.props.users }
+          deleteUser={ this.props.deleteUser } />
       </div>
     );
   }
@@ -26,4 +27,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { })(User);
+export default connect(mapStateToProps, { signUp, deleteUser })(User);

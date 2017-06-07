@@ -7,6 +7,10 @@ export default () => {
     getUsers: () => client.request({
       method: 'GET',
       url: '/user'
+    }),
+    deleteUser: ({ id }) => client.request({
+      method: 'DELETE',
+      url: `/user/${id}`
     })
   };
 };

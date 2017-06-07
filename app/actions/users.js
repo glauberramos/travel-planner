@@ -1,7 +1,12 @@
 import { push } from 'react-router-redux';
 import { authService } from '../services';
+import { userService } from '../services';
 
 import * as types from '../utils/types';
+
+function destroy(id) {
+  return { type: types.DESTROY_USER, id };
+}
 
 function beginLogin() {
   return { type: types.MANUAL_LOGIN_USER };
@@ -96,5 +101,12 @@ export function logOut() {
       .catch((err) => {
         dispatch(logoutError());
       });
+  };
+}
+
+export function deleteUser(id) {
+  return (dispatch) => {
+    return userService().deleteUser({ id })
+      .then(() => dispatch(destroy(id)));
   };
 }

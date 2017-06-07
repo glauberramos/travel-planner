@@ -54,9 +54,19 @@ export function signUp(req, res, next) {
   );
 }
 
+export function remove(req, res) {
+  User.destroy({ where: { id: req.params.id } }).then(() => {
+    res.status(200).send('Removed Successfully');
+  }).catch((err) => {
+    console.log(err);
+    res.status(500).send('We failed to delete for some reason');
+  });
+}
+
 export default {
   login,
   logout,
   signUp,
-  all
+  all,
+  remove
 };

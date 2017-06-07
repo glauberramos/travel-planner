@@ -14,7 +14,8 @@ export default class UserList extends Component {
             key={ user.id }
             id={ user.id }
             email={ user.email }
-            role={ user.role } />
+            role={ user.role }
+            deleteUser={ this.props.deleteUser } />
         );
       });
 
@@ -27,5 +28,6 @@ export default class UserList extends Component {
 };
 
 UserList.propTypes = {
-  users: PropTypes.array.isRequired
+  users: PropTypes.array.isRequired,
+  deleteUser: PropTypes.func.isRequired
 };

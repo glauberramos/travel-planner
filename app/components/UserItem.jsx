@@ -24,7 +24,7 @@ export default class UserItem extends Component {
   }
 
   onDelete() {
-    // this.props.deleteUser(this.props.id);
+    this.props.deleteUser(this.props.id);
   }
 
   onUpdate() {
@@ -67,5 +67,6 @@ export default class UserItem extends Component {
 UserItem.propTypes = {
   id: PropTypes.number.isRequired,
   email: PropTypes.string.isRequired,
-  role: PropTypes.string.isRequired
+  role: PropTypes.string.isRequired,
+  deleteUser: PropTypes.func.isRequired
 };
