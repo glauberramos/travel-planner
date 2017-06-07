@@ -3,6 +3,10 @@ import md5 from 'spark-md5';
 import * as types from '../types';
 import { travelService } from '../services';
 
+function destroy(id) {
+  return { type: types.DESTROY_TRAVEL, id };
+}
+
 function createTravelRequest(data) {
   return {
     type: types.CREATE_TRAVEL_REQUEST,
@@ -42,5 +46,12 @@ export function createTravel(destination, comments, startDate, endDate) {
       .catch(() => {
         return dispatch(createTravelFailure({ error: 'Oops! Something went wrong and we couldn\'t create your travel'}));
       });
+  };
+}
+
+export function deleteTravel(id) {
+  return (dispatch) => {
+    return travelService().deleteTravel({ id })
+      .then(() => dispatch(destroy(id)));
   };
 }

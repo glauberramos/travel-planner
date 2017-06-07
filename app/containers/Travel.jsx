@@ -3,15 +3,15 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import TravelBoard from '../components/TravelBoard';
 import TravelBox from '../components/TravelBox';
-import { createTravel } from '../actions/travels';
+import { createTravel, deleteTravel } from '../actions/travels';
 
 class Travel extends Component {
   render() {
-    const { travels, createTravel } = this.props;
+    const { travels, createTravel, deleteTravel } = this.props;
     return (
       <div>
         <TravelBox createTravel={ createTravel } />
-        <TravelBoard travels={ travels } />
+        <TravelBoard travels={ travels } deleteTravel={ deleteTravel } />
       </div>
     );
   }
@@ -19,7 +19,8 @@ class Travel extends Component {
 
 Travel.propTypes = {
   travels: PropTypes.array.isRequired,
-  createTravel: PropTypes.func.isRequired
+  createTravel: PropTypes.func.isRequired,
+  deleteTravel: PropTypes.func.isRequired
 };
 
 function mapStateToProps(state) {
@@ -28,4 +29,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { createTravel })(Travel);
+export default connect(mapStateToProps, { createTravel, deleteTravel })(Travel);

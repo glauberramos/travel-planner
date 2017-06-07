@@ -12,6 +12,10 @@ export default () => {
       method: 'POST',
       url: `/travel`,
       data
+    }),
+    deleteTravel: ({ id }) => client.request({
+      method: 'DELETE',
+      url: `/travel/${id}`
     })
   };
 };

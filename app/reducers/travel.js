@@ -29,6 +29,8 @@ const travels = (
       return [...state, travel(undefined, action)];
     case types.CREATE_TRAVEL_FAILURE:
       return state.filter(t => t.id !== action.id);
+    case types.DESTROY_TRAVEL:
+      return state.filter(t => t.id !== action.id);
     default:
       return state;
   }
