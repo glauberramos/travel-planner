@@ -1,5 +1,5 @@
 /* eslint consistent-return: 0, no-else-return: 0*/
-import * as types from '../types';
+import * as types from '../utils/types';
 import { travelService } from '../services';
 
 function destroy(id) {

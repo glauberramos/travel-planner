@@ -1,7 +1,7 @@
 import { push } from 'react-router-redux';
 import { authService } from '../services';
 
-import * as types from '../types';
+import * as types from '../utils/types';
 
 function beginLogin() {
   return { type: types.MANUAL_LOGIN_USER };

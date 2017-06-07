@@ -1,6 +1,6 @@
 import expect from 'expect';
 import reducer from '../../reducers/user';
-import * as types from '../../types';
+import * as types from '../../utils/types';
 
 describe('Users reducer', () => {
   const initialState = {

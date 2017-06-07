@@ -3,7 +3,7 @@ import thunk from 'redux-thunk';
 import { polyfill } from 'es6-promise';
 import expect from 'expect';
 import * as actions from '../../actions/users';
-import * as types from '../../types';
+import * as types from '../../utils/types';
 import createAuthServiceStub from '../../tests/helpers/createAuthServiceStub';
 
 const middlewares = [thunk];

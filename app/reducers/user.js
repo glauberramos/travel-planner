@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import * as types from '../types';
+import * as types from '../utils/types';
 
 const isLogin = (
   state = true,

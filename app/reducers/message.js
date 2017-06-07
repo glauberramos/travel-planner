@@ -1,4 +1,4 @@
-import * as types from '../types';
+import * as types from '../utils/types';
 
 export default function message(state = {
   message: '',

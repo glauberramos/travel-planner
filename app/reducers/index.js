@@ -3,7 +3,7 @@ import { routerReducer as routing } from 'react-router-redux';
 import user from '../reducers/user';
 import travel from '../reducers/travel';
 import message from '../reducers/message';
-import * as types from '../types';
+import * as types from '../utils/types';
 
 const isFetching = (state = false, action) => {
   switch (action.type) {

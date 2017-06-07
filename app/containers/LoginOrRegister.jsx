@@ -5,6 +5,7 @@ import classNames from 'classnames/bind';
 import { connect } from 'react-redux';
 import { manualLogin, signUp, toggleLoginMode } from '../actions/users';
 import styles from '../css/components/login';
+import { UserRoles } from '../utils/userRoles';
 
 const cx = classNames.bind(styles);
 
@@ -20,11 +21,12 @@ class LoginOrRegister extends Component {
     const { manualLogin, signUp, user: { isLogin } } = this.props;
     const email = ReactDOM.findDOMNode(this.refs.email).value;
     const password = ReactDOM.findDOMNode(this.refs.password).value;
+    const role = UserRoles.User;
 
     if (isLogin) {
       manualLogin({ email, password });
     } else {
-      signUp({ email, password });
+      signUp({ email, password, role });
     }
   }
 

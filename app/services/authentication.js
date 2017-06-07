@@ -12,12 +12,13 @@ export default () => {
         password
       }
     }),
-    signUp: ({ email, password }) => client.request({
+    signUp: ({ email, password, role }) => client.request({
       method: 'POST',
       url: '/signup',
       data: {
         email,
-        password
+        password,
+        role
       }
     }),
     logOut: () => client.request({
