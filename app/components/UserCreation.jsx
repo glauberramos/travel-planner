@@ -22,7 +22,7 @@ export default class UserCreation extends Component {
   }
 
   onSave() {
-    // this.props.createuser(this.state.email, this.state.role, this.state.password);
+    this.props.createUser({ email: this.state.email, role: this.state.role, password: this.state.password });
   }
 
   render() {

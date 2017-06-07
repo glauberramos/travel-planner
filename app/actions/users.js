@@ -90,6 +90,20 @@ export function signUp(data) {
   };
 }
 
+export function createUser(data) {
+  return (dispatch) => {
+    dispatch(beginSignUp());
+
+    return authService().signUp(data)
+      .then((response) => {
+          dispatch(signUpSuccess('You have successfully registered an account!'));
+      })
+      .catch((err) => {
+        dispatch(signUpError('Oops! Something went wrong when signing up'));
+      });
+  };
+}
+
 export function logOut() {
   return (dispatch) => {
     dispatch(beginLogout());
