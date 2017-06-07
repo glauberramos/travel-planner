@@ -6,7 +6,9 @@ export default class TravelBoard extends Component {
   render() {
     const travelListItems = this.props.travels.map((travel, key) => {
       return (
-        <TravelItem id={ travel.id }
+        <TravelItem
+          id={ travel.id }
+          key={ travel.id }
           destination={ travel.destination }
           startDate={ travel.startDate }
           endDate={ travel.endDate }

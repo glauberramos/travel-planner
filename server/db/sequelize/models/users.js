@@ -54,9 +54,6 @@ export default (sequelize, DataTypes) => {
     resetPasswordExpires: {
       type: DataTypes.DATE
     },
-    google: {
-      type: DataTypes.STRING
-    },
     role: {
       type: DataTypes.STRING
     }
@@ -68,7 +65,7 @@ export default (sequelize, DataTypes) => {
         User.hasMany(models.Token, {
           foreignKey: 'userId'
         });
-        
+
         User.hasMany(models.Travel, {
           foreignKey: 'userId'
         })

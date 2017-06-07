@@ -4,17 +4,17 @@ import PropTypes from 'prop-types';
 const TravelItem = ({ id, destination, startDate, endDate, comments, deleteTravel }) => {
   const onDelete = () => {
     return function() {
-      this.props.deleteTravel(id);
+      deleteTravel(id);
     }
   }
 
   return (
-    <div key={ id }>
+    <div>
       { destination }
       { startDate }
       { endDate }
       { comments }
-      <button onClick={ this.onDelete(travel.id).bind(this) }>
+      <button onClick={ onDelete() }>
         Delete travel
       </button>
     </div>
@@ -24,8 +24,8 @@ const TravelItem = ({ id, destination, startDate, endDate, comments, deleteTrave
 TravelItem.propTypes = {
   id: PropTypes.string.isRequired,
   destination: PropTypes.string.isRequired,
-  startDate: PropTypes.date.isRequired,
-  endDate: PropTypes.date.isRequired,
+  startDate: PropTypes.string.isRequired,
+  endDate: PropTypes.string.isRequired,
   comments: PropTypes.string.isRequired,
   deleteTravel: PropTypes.func.isRequired
 };
