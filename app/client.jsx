@@ -8,17 +8,12 @@ import * as types from './types';
 import configureStore from './store/configureStore';
 import fetchDataForRoute from './utils/fetchDataForRoute';
 
-// Grab the state from a global injected into
-// server-generated HTML
 const initialState = window.__INITIAL_STATE__;
 
 const store = configureStore(initialState, browserHistory);
 const history = syncHistoryWithStore(browserHistory, store);
 const routes = createRoutes(store);
 
-/**
- * Callback function handling frontend route changes.
- */
 function onUpdate() {
   // Prevent duplicate fetches when first loaded.
   // Explanation: On server-side render, we already have __INITIAL_STATE__
@@ -38,9 +33,6 @@ function onUpdate() {
     });
 }
 
-
-// Router converts <Route> element hierarchy to a route config:
-// Read more https://github.com/rackt/react-router/blob/latest/docs/Glossary.md#routeconfig
 render(
   <Provider store={store}>
     <Router history={history} onUpdate={onUpdate}>
