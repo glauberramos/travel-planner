@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { formatDate, formatDateBeautifully } from '../utils/dateFormat';
 
 export default class TravelItem extends Component {
   constructor(props) {
     super(props);
     this.state = { destination: this.props.destination,
       comments: this.props.comments,
-      startDate: this.props.startDate,
-      endDate: this.props.endDate
+      startDate: formatDate(new Date(this.props.startDate)),
+      endDate: formatDate(new Date(this.props.endDate))
     }
   }
 
@@ -35,8 +36,8 @@ export default class TravelItem extends Component {
     return (
       <div>
         { this.state.destination }
-        { this.state.startDate }
-        { this.state.endDate }
+        { formatDateBeautifully(new Date(this.state.startDate)) }
+        { formatDateBeautifully(new Date(this.state.endDate)) }
         { this.state.comments }
         <br />
         <button onClick={ this.onDelete.bind(this) }>
