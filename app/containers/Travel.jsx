@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import TravelCreation from '../components/TravelCreation';
-import TravelBoard from '../components/TravelBoard';
+import TravelList from '../components/TravelList';
 import { createTravel, deleteTravel, updateTravel } from '../actions/travels';
 
 class Travel extends Component {
@@ -11,7 +11,7 @@ class Travel extends Component {
     return (
       <div>
         <TravelCreation createTravel={ createTravel } />
-        <TravelBoard travels={ travels }
+        <TravelList travels={ travels }
           deleteTravel={ deleteTravel }
           updateTravel={ updateTravel } />
       </div>

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import Page from '../pages/Page';
-import TravelContainer from '../containers/Travel';
+import UserContainer from '../containers/User';
 
-class Travel extends Component {
+class User extends Component {
   getMetaData() {
     return {
       title: this.pageTitle(),
@@ -12,12 +12,12 @@ class Travel extends Component {
   }
 
   pageTitle = () => {
-    return 'Travel';
+    return 'User';
   };
 
   pageMeta = () => {
     return [
-      { name: 'description', content: 'Travelling page' }
+      { name: 'description', content: 'User spage' }
     ];
   };
 
@@ -28,10 +28,10 @@ class Travel extends Component {
   render() {
     return (
       <Page {...this.getMetaData()}>
-        <TravelContainer {...this.props} />
+        <UserContainer {...this.props} />
       </Page>
     );
   }
 }
 
-export default Travel;
+export default User;

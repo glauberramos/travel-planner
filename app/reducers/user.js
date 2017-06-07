@@ -72,11 +72,25 @@ const authenticated = (
   }
 };
 
+const users = (
+  state = [],
+  action
+) => {
+  switch (action.type) {
+    case types.REQUEST_SUCCESS:
+      if (action.data) return action.data;
+      return state;
+    default:
+      return state;
+  }
+};
+
 const userReducer = combineReducers({
   isLogin,
   isWaiting,
   authenticated,
-  message
+  message,
+  users
 });
 
 export default userReducer;

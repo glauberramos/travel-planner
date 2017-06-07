@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
-import { fetchTravelData } from './fetch-travel-data';
-import { App, Vote, LoginOrRegister, Travel } from './pages';
+import { fetchTravelData, fetchUserData } from './fetch-data';
+import { App, Vote, LoginOrRegister, Travel, User } from './pages';
 
 export default (store) => {
   const requireAuth = (nextState, replace, callback) => {
@@ -27,6 +27,7 @@ export default (store) => {
   return (
     <Route path="/" component={App}>
       <IndexRoute component={Travel} fetchData={fetchTravelData} />
+      <Route path="users" component={User} fetchData={fetchUserData} />
       <Route path="login" component={LoginOrRegister} onEnter={redirectAuth} />
     </Route>
   );
