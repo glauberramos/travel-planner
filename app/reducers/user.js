@@ -80,6 +80,8 @@ const users = (
     case types.REQUEST_SUCCESS:
       if (action.data) return action.data;
       return state;
+    case types.DESTROY_USER:
+      return state
     default:
       return state;
   }
