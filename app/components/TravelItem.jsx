@@ -5,7 +5,8 @@ import { formatDate, formatDateBeautifully } from '../utils/dateFormat';
 export default class TravelItem extends Component {
   constructor(props) {
     super(props);
-    this.state = { destination: this.props.destination,
+    this.state = {
+      destination: this.props.destination,
       comments: this.props.comments,
       startDate: formatDate(new Date(this.props.startDate)),
       endDate: formatDate(new Date(this.props.endDate))
