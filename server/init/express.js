@@ -9,7 +9,7 @@ import gzip from 'compression';
 import helmet from 'helmet';
 import unsupportedMessage from '../db/unsupportedMessage';
 import { sessionSecret } from '../../config/secrets';
-import { DB_TYPE, ENV } from '../../config/env';
+import { ENV } from '../../config/env';
 import { session as dbSession } from '../db';
 
 export default (app) => {
@@ -52,7 +52,7 @@ export default (app) => {
   console.log('===> 😊  Starting Server . . .');
   console.log(`===>  Environment: ${ENV}`);
   console.log(`===>  Listening on port: ${app.get('port')}`);
-  console.log(`===>  Using DB TYPE: ${DB_TYPE}`);
+  console.log(`===>  Using DB TYPE: postgres`);
 
   if (ENV === 'production') {
     console.log('===> 🚦  Note: In order for authentication to work in production');
