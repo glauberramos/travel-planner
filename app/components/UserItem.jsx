@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { UserRoles } from '../utils/UserRoles';
 
 export default class UserItem extends Component {
   constructor(props) {
@@ -35,6 +36,12 @@ export default class UserItem extends Component {
   }
 
   render() {
+    const roleOptions = Object.keys(UserRoles).map((role) => {
+      return (
+        <option value={ UserRoles[role] }>{ role }</option>
+      )
+    });
+
     return (
       <div>
         { this.props.id }
@@ -48,10 +55,9 @@ export default class UserItem extends Component {
           placeholder="email"
           onChange={this.updateEmail.bind(this)}
           value={this.state.email} />
-        <input
-          placeholder="role"
-          onChange={this.updateRole.bind(this)}
-          value={this.state.role} />
+        <select value={this.state.role} onChange={this.updateRole.bind(this)}>
+          { roleOptions }
+        </select>
         <input
           type="password"
           onChange={this.updatePassword.bind(this)}
