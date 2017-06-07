@@ -29,7 +29,15 @@ export default class TravelItem extends Component {
   }
 
   onDelete() {
-    this.props.deleteTravel(id);
+    this.props.deleteTravel(this.props.id);
+  }
+
+  onUpdate() {
+    this.props.updateTravel(this.props.id,
+      this.state.destination,
+      this.state.comments,
+      this.state.startDate,
+      this.state.endDate);
   }
 
   render() {
@@ -59,7 +67,7 @@ export default class TravelItem extends Component {
           type="date"
           onChange={this.updateEndDate.bind(this)}
           value={this.state.endDate} />
-        <button>
+        <button onClick={ this.onUpdate.bind(this) }>
           Edit Travel
         </button>
       </div>

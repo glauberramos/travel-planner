@@ -26,6 +26,18 @@ export function add(req, res) {
   });
 }
 
+export function update(req, res) {
+  const query = { id: req.params.id };
+  const data = req.body;
+
+  Travel.update(data, { where: query }).then(() => {
+    res.status(200).send('Updated successfully');
+  }).catch((err) => {
+    console.log(err);
+    res.status(500).send('We failed to save for some reason');
+  });
+}
+
 export function remove(req, res) {
   Travel.destroy({ where: { id: req.params.id } }).then(() => {
     res.status(200).send('Removed Successfully');
@@ -38,5 +50,6 @@ export function remove(req, res) {
 export default {
   all,
   add,
+  update,
   remove
 };

@@ -64,3 +64,18 @@ export function deleteTravel(id) {
       .then(() => dispatch(destroy(id)));
   };
 }
+
+export function updateTravel(id, destination, comments, startDate, endDate) {
+  return (dispatch) => {
+    return travelService().updateTravel({
+      id,
+      data: {
+        destination: destination,
+        comments: comments,
+        startDate: startDate,
+        endDate: endDate
+      }
+    })
+      .catch(() => dispatch(createTravelFailure({id, error: 'Oops! Something went wrong and we couldn\'t edit your travel'})));
+  };
+}

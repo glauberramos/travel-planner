@@ -3,15 +3,17 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import TravelCreation from '../components/TravelCreation';
 import TravelBoard from '../components/TravelBoard';
-import { createTravel, deleteTravel } from '../actions/travels';
+import { createTravel, deleteTravel, updateTravel } from '../actions/travels';
 
 class Travel extends Component {
   render() {
-    const { travels, createTravel, deleteTravel } = this.props;
+    const { travels, createTravel, deleteTravel, updateTravel } = this.props;
     return (
       <div>
         <TravelCreation createTravel={ createTravel } />
-        <TravelBoard travels={ travels } deleteTravel={ deleteTravel } />
+        <TravelBoard travels={ travels }
+          deleteTravel={ deleteTravel }
+          updateTravel={ updateTravel } />
       </div>
     );
   }
@@ -20,7 +22,8 @@ class Travel extends Component {
 Travel.propTypes = {
   travels: PropTypes.array.isRequired,
   createTravel: PropTypes.func.isRequired,
-  deleteTravel: PropTypes.func.isRequired
+  deleteTravel: PropTypes.func.isRequired,
+  updateTravel: PropTypes.func.isRequired
 };
 
 function mapStateToProps(state) {
@@ -29,4 +32,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { createTravel, deleteTravel })(Travel);
+export default connect(mapStateToProps, { createTravel, deleteTravel, updateTravel })(Travel);

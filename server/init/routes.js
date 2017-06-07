@@ -38,6 +38,7 @@ export default (app) => {
   if (travelsController) {
     app.get('/travel', loggedIn, travelsController.all);
     app.post('/travel', travelsController.add);
+    app.put('/travel/:id', travelsController.update);
     app.delete('/travel/:id', travelsController.remove);
   } else {
     console.warn(unsupportedMessage('travels routes'));

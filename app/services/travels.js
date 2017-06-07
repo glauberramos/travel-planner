@@ -16,6 +16,11 @@ export default () => {
     deleteTravel: ({ id }) => client.request({
       method: 'DELETE',
       url: `/travel/${id}`
+    }),
+    updateTravel: ({ id, data }) => client.request({
+      method: 'PUT',
+      url: `/travel/${id}`,
+      data
     })
   };
 };

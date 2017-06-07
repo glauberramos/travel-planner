@@ -13,7 +13,9 @@ export default class TravelBoard extends Component {
           startDate={ travel.startDate }
           endDate={ travel.endDate }
           comments={ travel.comments }
-          deleteTravel={ this.props.deleteTravel } />
+          deleteTravel={ this.props.deleteTravel }
+          updateTravel= { this.props.updateTravel }
+          />
       );
     });
 
@@ -27,5 +29,6 @@ export default class TravelBoard extends Component {
 
 TravelBoard.propTypes = {
   travels: PropTypes.array.isRequired,
-  deleteTravel: PropTypes.func.isRequired
+  deleteTravel: PropTypes.func.isRequired,
+  updateTravel: PropTypes.func.isRequired
 };
