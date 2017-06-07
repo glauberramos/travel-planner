@@ -5,9 +5,8 @@ module.exports = {
     return queryInterface.createTable(
       'Travels', {
         id: {
-          type: DataTypes.INTEGER,
-          primaryKey: true,
-          autoIncrement: true
+          type: DataTypes.STRING,
+          primaryKey: true
         },
         userId: {
           type: DataTypes.INTEGER,

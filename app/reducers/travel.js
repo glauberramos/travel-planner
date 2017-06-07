@@ -10,7 +10,8 @@ const travel = (
         destination: action.destination,
         comments: action.comments,
         startDate: action.startDate,
-        endDate: action.endDate
+        endDate: action.endDate,
+        id: action.id
       };
     default:
       return state;

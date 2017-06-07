@@ -1,5 +1,4 @@
 /* eslint consistent-return: 0, no-else-return: 0*/
-import md5 from 'spark-md5';
 import * as types from '../types';
 import { travelService } from '../services';
 
@@ -13,7 +12,8 @@ function createTravelRequest(data) {
     destination: data.destination,
     comments: data.comments,
     startDate: data.startDate,
-    endDate: data.endDate
+    endDate: data.endDate,
+    id: data.id
   };
 }
 
@@ -30,10 +30,19 @@ function createTravelFailure(data) {
   };
 }
 
+function guidGenerator() {
+    var S4 = function() {
+       return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
+    };
+
+    return (S4() + S4() + "-" + S4() + "-" + S4() + "-" + S4() + "-" + S4() + S4() + S4());
+}
+
 export function createTravel(destination, comments, startDate, endDate) {
   return (dispatch, getState) => {
     const { travel } = getState();
-    const data = { destination, comments, startDate, endDate };
+    const id = guidGenerator();
+    const data = { destination, id, comments, startDate, endDate };
 
     dispatch(createTravelRequest(data));
 
