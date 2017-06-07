@@ -1,25 +1,17 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import TravelItem from '../components/TravelItem';
 
 export default class TravelBoard extends Component {
-  onDelete(id) {
-    return function() {
-      this.props.deleteTravel(id)
-    }
-  }
-
   render() {
     const travelListItems = this.props.travels.map((travel, key) => {
       return (
-        <div key={ travel.id }>
-          { travel.destination }
-          { travel.startDate }
-          { travel.endDate }
-          { travel.comments }
-          <button onClick={ this.onDelete(travel.id).bind(this) }>
-            Delete travel
-          </button>
-        </div>
+        <TravelItem id={ travel.id }
+          destination={ travel.destination }
+          startDate={ travel.startDate }
+          endDate={ travel.endDate }
+          comments={ travel.comments }
+          deleteTravel={ this.props.deleteTravel } />
       );
     });
 
