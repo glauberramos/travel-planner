@@ -19,6 +19,20 @@ function loginSuccess(message) {
   };
 }
 
+function updateSuccess(id) {
+  return {
+    type: types.UPDATE_USER_SUCCESS,
+    id
+  };
+}
+
+function updateError(message) {
+  return {
+    type: types.UPDATE_USER_ERROR,
+    message
+  };
+}
+
 function loginError(message) {
   return {
     type: types.LOGIN_ERROR_USER,
@@ -41,6 +55,13 @@ function signUpSuccess(message) {
   return {
     type: types.SIGNUP_SUCCESS_USER,
     message
+  };
+}
+
+function crateUserSuccess(data) {
+  return {
+    type: types.CREATE_USER_SUCCESS,
+    data
   };
 }
 
@@ -96,7 +117,7 @@ export function createUser(data) {
 
     return authService().signUp(data)
       .then((response) => {
-          dispatch(signUpSuccess('You have successfully registered an account!'));
+          dispatch(crateUserSuccess(data));
       })
       .catch((err) => {
         dispatch(signUpError('Oops! Something went wrong when signing up'));
@@ -134,7 +155,9 @@ export function updateUser(id, email, role, password) {
         role: role,
         password: password
       }
-    })
-      .catch(() => dispatch(signUpError({id, error: 'Oops! Something went wrong and we couldn\'t edit user'})));
+      }).then((response) => {
+          dispatch(updateSuccess(id));
+      })
+      .catch(() => dispatch(updateError({error: 'Oops! Something went wrong and we couldn\'t edit user'})));
   };
 }
