@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames/bind';
 import { formatDate, formatDateBeautifully } from '../../utils/dateFormat';
+import styles from './Travel.css';
+const cx = classNames.bind(styles);
 
 export default class TravelItem extends Component {
   constructor(props) {
@@ -43,34 +46,38 @@ export default class TravelItem extends Component {
 
   render() {
     return (
-      <div>
-        { this.state.destination }
-        { formatDateBeautifully(new Date(this.state.startDate)) }
-        { formatDateBeautifully(new Date(this.state.endDate)) }
-        { this.state.comments }
+      <div className={cx('item')}>
+        <span className={cx('destination')}>{ this.state.destination }</span>
+        <span className={cx('date')}>{ formatDateBeautifully(new Date(this.state.startDate)) } - { formatDateBeautifully(new Date(this.state.endDate)) }</span>
+        <span className={cx('comments')}>{ this.state.comments }</span>
         <br />
-        <button onClick={ this.onDelete.bind(this) }>
-          Delete Trip
-        </button>
-        <input
-          placeholder="Trip destination"
-          onChange={this.updateDestination.bind(this)}
-          value={this.state.destination} />
-        <input
-          placeholder="Trip comments"
-          onChange={this.updateComments.bind(this)}
-          value={this.state.comments} />
-        <input
-          type="date"
-          onChange={this.updateStartDate.bind(this)}
-          value={this.state.startDate} />
-        <input
-          type="date"
-          onChange={this.updateEndDate.bind(this)}
-          value={this.state.endDate} />
-        <button onClick={ this.onUpdate.bind(this) }>
+        <button className={cx('button')} onClick={ this.onDelete.bind(this) }>
           Edit Trip
         </button>
+        <div className={cx('edit')}>
+          <input
+            placeholder="Trip destination"
+            onChange={this.updateDestination.bind(this)}
+            value={this.state.destination} />
+          <input
+            type="date"
+            onChange={this.updateStartDate.bind(this)}
+            value={this.state.startDate} />
+          <input
+            type="date"
+            onChange={this.updateEndDate.bind(this)}
+            value={this.state.endDate} />
+          <textarea
+            placeholder="Trip comments"
+            onChange={this.updateComments.bind(this)}
+            value={this.state.comments} />
+          <button className={cx('button')} onClick={ this.onDelete.bind(this) }>
+            Delete Trip
+          </button>
+          <button className={cx('button')}onClick={ this.onUpdate.bind(this) }>
+            Save Trip
+          </button>
+        </div>
       </div>
     );
   }

@@ -36,6 +36,7 @@ export default class TravelList extends Component {
     return (
       <div>
         <input value={ this.state.destinationFilter } placeholder="Filter destination" onChange={ this.updateFilter.bind(this) } />
+        <br/>
         { travelListItems }
       </div>
     )
