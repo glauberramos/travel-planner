@@ -30,7 +30,7 @@ export function login(req, res, next) {
 
     return req.logIn(user, (loginErr) => {
       if (loginErr) return res.sendStatus(401);
-      return res.sendStatus(200);
+      return res.status(200).send({userRole: user.role });
     });
   })(req, res, next);
 }

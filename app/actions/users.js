@@ -88,7 +88,7 @@ export function manualLogin(data) {
 
     return authService().login(data)
       .then((response) => {
-          dispatch(loginSuccess('You have been successfully logged in', response.role));
+          dispatch(loginSuccess('You have been successfully logged in', response.data.userRole));
           dispatch(push('/'));
       })
       .catch((err) => {

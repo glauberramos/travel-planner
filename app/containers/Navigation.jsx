@@ -10,14 +10,14 @@ import { UserRoles } from '../utils/UserRoles';
 const cx = classNames.bind(styles);
 
 const Navigation = ({ user, logOut }) => {
-    const usersTab = (user.role ===  UserRoles.Manager) || (user.role ===  UserRoles.Admin) ? (
+    const usersTab = ((user.userRole ===  UserRoles.Manager) || (user.userRole ===  UserRoles.Admin)) && user.authenticated ? (
       <Link className={cx('item')} to="/users">Users</Link>
     ) : '';
 
     return (
       <nav className={cx('navigation')} role="navigation">
         <Link to="/" className={cx('item', 'logo')} activeClassName={cx('active')}>Travel Planner</Link>
-        { user.authenticated ? (
+        { ((user.userRole ===  UserRoles.User) || (user.userRole ===  UserRoles.Admin)) && user.authenticated ? (
           <Link className={cx('item')} to="/trips">Trips</Link>
         ) : '' }
         { usersTab }

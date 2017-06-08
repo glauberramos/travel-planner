@@ -4,15 +4,25 @@ import { connect } from 'react-redux';
 import UserCreation from '../components/UserCreation';
 import UserList from '../components/UserList';
 import { createUser, deleteUser, updateUser } from '../actions/users';
+import { Link } from 'react-router';
+import { UserRoles } from '../utils/UserRoles';
 
 class User extends Component {
   render() {
     return (
       <div>
-        <UserCreation createUser={ this.props.createUser } />
-        <UserList users={ this.props.users }
-          deleteUser={ this.props.deleteUser }
-          updateUser={ this.props.updateUser } />
+        { ((this.props.userRole === UserRoles.Manager) || (this.props.userRole === UserRoles.Admin)) ?
+          ( <div>
+              <UserCreation createUser={ this.props.createUser } />
+              <UserList users={ this.props.users }
+                deleteUser={ this.props.deleteUser }
+                updateUser={ this.props.updateUser } />
+            </div>
+          ) : (
+            <Link to="/trips">
+              <button>Manage Trips</button>
+            </Link> )
+          }
       </div>
     );
   }
@@ -27,7 +37,8 @@ User.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    users: state.user.users
+    users: state.user.users,
+    userRole: state.user.userRole
   };
 }
 
