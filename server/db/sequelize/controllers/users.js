@@ -49,7 +49,7 @@ export function signUp(req, res, next) {
     const user = User.build({
       email: req.body.email,
       password: req.body.password,
-      role: req.body.role
+      role: UserRoles.User
     });
 
     return user.save().then(() => {
