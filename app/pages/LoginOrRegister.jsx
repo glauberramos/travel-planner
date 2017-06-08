@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Page from '../pages/Page';
-import LoginOrRegisterContainer from '../containers/LoginOrRegister';
+import LoginOrRegisterContainer from '../components/auth/LoginOrRegister';
 
 class LoginOrRegister extends Component {
   getMetaData() {

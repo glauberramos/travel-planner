@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
-import TravelCreation from '../components/TravelCreation';
-import TravelList from '../components/TravelList';
-import { createTravel, deleteTravel, updateTravel } from '../actions/travels';
-import { UserRoles } from '../utils/userRoles';
+import TravelCreation from '../travel/TravelCreation';
+import TravelList from '../travel/TravelList';
+import { createTravel, deleteTravel, updateTravel } from '../../actions/travels';
+import { UserRoles } from '../../utils/userRoles';
 
 class Travel extends Component {
   render() {

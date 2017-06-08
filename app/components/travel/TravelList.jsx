@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import TravelItem from '../components/TravelItem';
+import TravelItem from '../travel/TravelItem';
 
 export default class TravelList extends Component {
   constructor(props) {

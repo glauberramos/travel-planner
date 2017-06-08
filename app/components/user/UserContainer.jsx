@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import UserCreation from '../components/UserCreation';
-import UserList from '../components/UserList';
-import { createUser, deleteUser, updateUser } from '../actions/users';
+import UserCreation from '../user/UserCreation';
+import UserList from '../user/UserList';
+import { createUser, deleteUser, updateUser } from '../../actions/users';
 import { Link } from 'react-router';
-import { UserRoles } from '../utils/userRoles';
+import { UserRoles } from '../../utils/userRoles';
 
 class User extends Component {
   render() {

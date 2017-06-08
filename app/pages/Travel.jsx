@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Page from '../pages/Page';
-import TravelContainer from '../containers/Travel';
+import TravelContainer from '../components/travel/TravelContainer';
 
 class Travel extends Component {
   getMetaData() {

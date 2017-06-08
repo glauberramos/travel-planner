@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { formatDate, formatDateBeautifully } from '../utils/dateFormat';
+import { formatDate, formatDateBeautifully } from '../../utils/dateFormat';
 
 export default class TravelItem extends Component {
   constructor(props) {

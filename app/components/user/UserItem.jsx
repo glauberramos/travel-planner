@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { UserRoles } from '../utils/userRoles';
+import { UserRoles } from '../../utils/userRoles';
 
 export default class UserItem extends Component {
   constructor(props) {

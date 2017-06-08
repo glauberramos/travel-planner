@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Page from '../pages/Page';
-import UserContainer from '../containers/User';
+import UserContainer from '../components/user/UserContainer';
 
 class User extends Component {
   getMetaData() {
