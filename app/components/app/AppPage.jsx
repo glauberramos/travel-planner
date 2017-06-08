@@ -1,5 +1,5 @@
 import React from 'react';
-import Page from '../../pages/Page';
+import Page from './Page';
 import AppContainer from './AppContainer';
 import { title, meta, link } from './assets';
 

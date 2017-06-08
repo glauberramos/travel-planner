@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Page from '../../pages/Page';
+import Page from '../app/Page';
 import TravelContainer from './TravelContainer';
 
 class TravelPage extends Component {

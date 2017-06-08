@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Page from '../../pages/Page';
+import Page from '../app/Page';
 import LoginOrRegisterContainer from './LoginOrRegister';
 
 class LoginOrRegisterPage extends Component {
