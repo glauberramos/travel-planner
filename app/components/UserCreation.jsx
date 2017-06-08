@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { UserRoles } from '../utils/UserRoles';
+import { UserRoles } from '../utils/userRoles';
 
 const ENTER_KEY_CODE = 13;
 

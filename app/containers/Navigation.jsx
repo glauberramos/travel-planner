@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import classNames from 'classnames/bind';
 import { logOut } from '../actions/users';
 import styles from '../css/components/navigation';
-import { UserRoles } from '../utils/UserRoles';
+import { UserRoles } from '../utils/userRoles';
 
 const cx = classNames.bind(styles);
 

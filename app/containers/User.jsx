@@ -5,7 +5,7 @@ import UserCreation from '../components/UserCreation';
 import UserList from '../components/UserList';
 import { createUser, deleteUser, updateUser } from '../actions/users';
 import { Link } from 'react-router';
-import { UserRoles } from '../utils/UserRoles';
+import { UserRoles } from '../utils/userRoles';
 
 class User extends Component {
   render() {
