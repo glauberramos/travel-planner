@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import UserCreation from '../user/UserCreation';
-import UserList from '../user/UserList';
+import UserCreation from './UserCreation';
+import UserList from './UserList';
 import { createUser, deleteUser, updateUser } from '../../actions/users';
 import { Link } from 'react-router';
 import { UserRoles } from '../../utils/userRoles';

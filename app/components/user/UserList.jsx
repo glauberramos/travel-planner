@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import UserItem from '../user/UserItem';
+import UserItem from './UserItem';
 
 export default class UserList extends Component {
   constructor(props) {

@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
-import TravelCreation from '../travel/TravelCreation';
-import TravelList from '../travel/TravelList';
+import TravelCreation from './TravelCreation';
+import TravelList from './TravelList';
 import { createTravel, deleteTravel, updateTravel } from '../../actions/travels';
 import { UserRoles } from '../../utils/userRoles';
 
