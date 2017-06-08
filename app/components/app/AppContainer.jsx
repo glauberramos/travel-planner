@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import Navigation from '../navigation/Navigation';
-import Message from '../app/Message';
+import Message from './Message';
 import styles from '../../css/main';
 
 const cx = classNames.bind(styles);
