@@ -78,10 +78,11 @@ const users = (
 ) => {
   switch (action.type) {
     case types.REQUEST_SUCCESS:
-    case types.DESTROY_USER:
     case types.UPDATE_USER_SUCCESS:
       if (action.data) return action.data;
       return state;
+    case types.DESTROY_USER:
+      return state.filter(user => user.id !== action.id);
     case types.CREATE_USER_SUCCESS:
       if (action.data) return [...state, action.data];
       return state;
