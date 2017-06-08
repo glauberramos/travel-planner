@@ -14,12 +14,15 @@ import axios from 'axios';
 export default function render(req, res) {
   const authenticated = req.isAuthenticated();
   const history = createMemoryHistory();
+  const userRole = req.user ? req.user.role : '';
+
   const store = configureStore({
     user: {
       authenticated,
       isWaiting: false,
       message: '',
-      isLogin: true
+      isLogin: true,
+      userRole: userRole
     }
   }, history);
   const routes = createRoutes(store);

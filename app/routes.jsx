@@ -24,9 +24,11 @@ export default (store) => {
     }
     callback();
   };
+
   return (
     <Route path="/" component={App}>
       <IndexRoute component={Travel} fetchData={fetchTravelData} />
+      <Route path="trips" component={Travel} fetchData={fetchTravelData} />
       <Route path="users" component={User} fetchData={fetchUserData} />
       <Route path="login" component={LoginOrRegister} onEnter={redirectAuth} />
     </Route>

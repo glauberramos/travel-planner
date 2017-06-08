@@ -50,14 +50,14 @@ export default class TravelItem extends Component {
         { this.state.comments }
         <br />
         <button onClick={ this.onDelete.bind(this) }>
-          Delete travel
+          Delete Trip
         </button>
         <input
-          placeholder="Travel destination"
+          placeholder="Trip destination"
           onChange={this.updateDestination.bind(this)}
           value={this.state.destination} />
         <input
-          placeholder="Travel comments"
+          placeholder="Trip comments"
           onChange={this.updateComments.bind(this)}
           value={this.state.comments} />
         <input
@@ -69,7 +69,7 @@ export default class TravelItem extends Component {
           onChange={this.updateEndDate.bind(this)}
           value={this.state.endDate} />
         <button onClick={ this.onUpdate.bind(this) }>
-          Edit Travel
+          Edit Trip
         </button>
       </div>
     );

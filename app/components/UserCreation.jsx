@@ -7,7 +7,7 @@ const ENTER_KEY_CODE = 13;
 export default class UserCreation extends Component {
   constructor(props) {
     super(props);
-    this.state = { email: '', role: '', password: '' }
+    this.state = { email: '', role: 'user', password: '' }
   }
 
   updateEmail(event) {

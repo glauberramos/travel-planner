@@ -91,12 +91,26 @@ const users = (
   }
 };
 
+const userRole = (
+  state = '',
+  action
+) => {
+  switch (action.type) {
+    case types.LOGIN_SUCCESS_USER:
+    case types.SIGNUP_SUCCESS_USER:
+      return action.role || '';
+    default:
+      return state;
+  }
+};
+
 const userReducer = combineReducers({
   isLogin,
   isWaiting,
   authenticated,
   message,
-  users
+  users,
+  userRole
 });
 
 export default userReducer;

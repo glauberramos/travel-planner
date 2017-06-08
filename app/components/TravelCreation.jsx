@@ -33,11 +33,11 @@ export default class TravelCreation extends Component {
     return (
       <div>
         <input
-          placeholder="Travel destination"
+          placeholder="Trip destination"
           onChange={this.updateDestination.bind(this)}
           value={this.state.destination} />
         <input
-          placeholder="Travel comments"
+          placeholder="Trip comments"
           onChange={this.updateComments.bind(this)}
           value={this.state.comments} />
         <input
@@ -49,7 +49,7 @@ export default class TravelCreation extends Component {
           onChange={this.updateEndDate.bind(this)}
           value={this.state.endDate} />
         <button onClick={this.onSave.bind(this)}>
-          Create Travel
+          Create Trip
         </button>
       </div>
     );

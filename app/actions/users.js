@@ -12,10 +12,11 @@ function beginLogin() {
   return { type: types.MANUAL_LOGIN_USER };
 }
 
-function loginSuccess(message) {
+function loginSuccess(message, role) {
   return {
     type: types.LOGIN_SUCCESS_USER,
-    message
+    message,
+    role
   };
 }
 
@@ -87,7 +88,7 @@ export function manualLogin(data) {
 
     return authService().login(data)
       .then((response) => {
-          dispatch(loginSuccess('You have been successfully logged in'));
+          dispatch(loginSuccess('You have been successfully logged in', response.role));
           dispatch(push('/'));
       })
       .catch((err) => {
@@ -102,7 +103,7 @@ export function signUp(data) {
 
     return authService().signUp(data)
       .then((response) => {
-          dispatch(signUpSuccess('You have successfully registered an account!'));
+          dispatch(signUpSuccess('You have successfully registered an account!', data.role));
           dispatch(push('/'));
       })
       .catch((err) => {
@@ -132,6 +133,7 @@ export function logOut() {
     return authService().logOut()
       .then((response) => {
           dispatch(logoutSuccess());
+          dispatch(push('/login'));
       })
       .catch((err) => {
         dispatch(logoutError());
