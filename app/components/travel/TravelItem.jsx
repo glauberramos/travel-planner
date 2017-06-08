@@ -12,7 +12,8 @@ export default class TravelItem extends Component {
       destination: this.props.destination,
       comments: this.props.comments,
       startDate: formatDate(new Date(this.props.startDate)),
-      endDate: formatDate(new Date(this.props.endDate))
+      endDate: formatDate(new Date(this.props.endDate)),
+      editing: false
     }
   }
 
@@ -44,16 +45,24 @@ export default class TravelItem extends Component {
       this.state.endDate);
   }
 
+  toggleEdit() {
+    this.setState({
+      editing: !this.state.editing
+    });
+  }
+
   render() {
     return (
-      <div className={cx('item')}>
-        <span className={cx('destination')}>{ this.state.destination }</span>
-        <span className={cx('date')}>{ formatDateBeautifully(new Date(this.state.startDate)) } - { formatDateBeautifully(new Date(this.state.endDate)) }</span>
-        <span className={cx('comments')}>{ this.state.comments }</span>
-        <br />
-        <button className={cx('button')} onClick={ this.onDelete.bind(this) }>
-          Edit Trip
-        </button>
+      <div className={cx('item', { editing: this.state.editing })}>
+        <div className={cx('info')}>
+          <span className={cx('destination')}>{ this.state.destination }</span>
+          <span className={cx('date')}>{ formatDateBeautifully(new Date(this.state.startDate)) } - { formatDateBeautifully(new Date(this.state.endDate)) }</span>
+          <span className={cx('comments')}>{ this.state.comments }</span>
+          <br />
+          <button className={cx('button')} onClick={ this.toggleEdit.bind(this) }>
+            Edit
+          </button>
+        </div>
         <div className={cx('edit')}>
           <input
             placeholder="Trip destination"
@@ -72,10 +81,13 @@ export default class TravelItem extends Component {
             onChange={this.updateComments.bind(this)}
             value={this.state.comments} />
           <button className={cx('button')} onClick={ this.onDelete.bind(this) }>
-            Delete Trip
+            Delete
           </button>
           <button className={cx('button')}onClick={ this.onUpdate.bind(this) }>
-            Save Trip
+            Save
+          </button>
+          <button className={cx('button')} onClick={ this.toggleEdit.bind(this) }>
+            Cancel
           </button>
         </div>
       </div>
