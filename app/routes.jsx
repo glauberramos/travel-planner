@@ -25,11 +25,22 @@ export default (store) => {
     callback();
   };
 
+  const redirectLogin = (nextState, replace, callback) => {
+    const { user: { authenticated }} = store.getState();
+    if (!authenticated) {
+      replace({
+        pathname: '/login'
+      });
+    }
+
+    callback();
+  };
+
   return (
     <Route path="/" component={App}>
-      <IndexRoute component={Travel} fetchData={fetchTravelData} />
-      <Route path="trips" component={Travel} fetchData={fetchTravelData} />
-      <Route path="users" component={User} fetchData={fetchUserData} />
+      <IndexRoute component={Travel} fetchData={fetchTravelData} onEnter={redirectLogin} />
+      <Route path="trips" component={Travel} fetchData={fetchTravelData} onEnter={redirectLogin} />
+      <Route path="users" component={User} fetchData={fetchUserData} onEnter={redirectLogin}  />
       <Route path="login" component={LoginOrRegister} onEnter={redirectAuth} />
     </Route>
   );
