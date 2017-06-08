@@ -9,14 +9,15 @@ const UserRoles = {
 }
 
 export function all(req, res) {
-  if (req.user && (req.user.role === UserRoles.Admin) || (req.user.role === UserRoles.User)) {
+  if ((req.user !== undefined) && ((req.user.role === UserRoles.Admin) || (req.user.role === UserRoles.User))) {
     let query;
-    if (req.user && req.user.role === UserRoles.Admin) {
+
+    if (req.user.role === UserRoles.Admin) {
       query = Travel.findAll();
     } else {
       query = Travel.findAll({
         where: {
-          userId: (req.user && req.user.id) || 9999
+          userId: (req.user.id) || 9999
         }
       });
     }
@@ -33,7 +34,7 @@ export function all(req, res) {
 }
 
 export function add(req, res) {
-  if (req.user && (req.user.role === UserRoles.Admin) || (req.user.role === UserRoles.User)) {
+  if ((req.user !== undefined) && ((req.user.role === UserRoles.Admin) || (req.user.role === UserRoles.User))) {
     req.body.userId = req.user.id;
 
     Travel.create(req.body).then(() => {
@@ -48,7 +49,7 @@ export function add(req, res) {
 }
 
 export function update(req, res) {
-  if (req.user && (req.user.role === UserRoles.Admin) || (req.user.role === UserRoles.User)) {
+  if ((req.user !== undefined) && ((req.user.role === UserRoles.Admin) || (req.user.role === UserRoles.User))) {
     const query = { id: req.params.id, userId: req.user.id };
     const data = req.body;
 
@@ -64,7 +65,7 @@ export function update(req, res) {
 }
 
 export function remove(req, res) {
-  if (req.user && (req.user.role === UserRoles.Admin) || (req.user.role === UserRoles.User)) {
+  if ((req.user !== undefined) && ((req.user.role === UserRoles.Admin) || (req.user.role === UserRoles.User))) {
     Travel.destroy({ where: { id: req.params.id, userId: req.user.id } }).then(() => {
       res.status(200).send('Removed Successfully');
     }).catch((err) => {

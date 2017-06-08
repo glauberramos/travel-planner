@@ -9,7 +9,7 @@ const UserRoles = {
 }
 
 export function all(req, res) {
-  if (req.user && (req.user.role === UserRoles.Admin) || (req.user.role === UserRoles.Manager)) {
+  if ((req.user !== undefined) && ((req.user.role === UserRoles.Admin) || (req.user.role === UserRoles.Manager))) {
     User.findAll().then((users) => {
       res.json(users);
     }).catch((err) => {
@@ -64,7 +64,7 @@ export function signUp(req, res, next) {
 }
 
 export function add(req, res, next) {
-  if (req.user && (req.user.role === UserRoles.Admin) || (req.user.role === UserRoles.Manager)) {
+  if ((req.user !== undefined) && ((req.user.role === UserRoles.Admin) || (req.user.role === UserRoles.Manager))) {
     User.findOne({ where: { email: req.body.email } }).then((existingUser) => {
       if (existingUser) {
         return res.sendStatus(409);
@@ -88,7 +88,7 @@ export function add(req, res, next) {
 }
 
 export function remove(req, res) {
-  if (req.user && (req.user.role === UserRoles.Admin) || (req.user.role === UserRoles.Manager)) {
+  if ((req.user !== undefined) && ((req.user.role === UserRoles.Admin) || (req.user.role === UserRoles.Manager))) {
     User.destroy({ where: { id: req.params.id } }).then(() => {
       res.status(200).send('Removed Successfully');
     }).catch((err) => {
@@ -101,7 +101,7 @@ export function remove(req, res) {
 }
 
 export function update(req, res) {
-  if (req.user && (req.user.role === UserRoles.Admin) || (req.user.role === UserRoles.Manager)) {
+  if ((req.user !== undefined) && ((req.user.role === UserRoles.Admin) || (req.user.role === UserRoles.Manager))) {
     const query = { id: req.params.id };
     const data = req.body;
 
