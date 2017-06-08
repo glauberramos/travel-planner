@@ -16,6 +16,15 @@ export default () => {
       method: 'PUT',
       url: `/user/${id}`,
       data
+    }),
+    createUser: ({ email, password, role }) => client.request({
+      method: 'POST',
+      url: `/user`,
+      data: {
+        email,
+        password,
+        role
+      }
     })
   };
 };

@@ -6,7 +6,6 @@ import unsupportedMessage from '../db/unsupportedMessage';
 import { controllers, passport as passportConfig } from '../db';
 
 const usersController = controllers && controllers.users;
-const topicsController = controllers && controllers.topics;
 const travelsController = controllers && controllers.travels;
 
 export default (app) => {
@@ -14,6 +13,7 @@ export default (app) => {
     app.post('/sessions', usersController.login);
     app.delete('/sessions', usersController.logout);
     app.post('/signUp', usersController.signUp);
+    app.post('/user', usersController.add);
     app.get('/user', usersController.all);
     app.delete('/user/:id', usersController.remove);
     app.put('/user/:id', usersController.update);
@@ -27,15 +27,6 @@ export default (app) => {
     } else {
         res.redirect('/login');
     }
-  }
-
-  if (topicsController) {
-    app.get('/topic', topicsController.all);
-    app.post('/topic/:id', topicsController.add);
-    app.put('/topic/:id', topicsController.update);
-    app.delete('/topic/:id', topicsController.remove);
-  } else {
-    console.warn(unsupportedMessage('topics routes'));
   }
 
   if (travelsController) {

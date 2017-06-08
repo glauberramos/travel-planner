@@ -63,6 +63,30 @@ export function signUp(req, res, next) {
   );
 }
 
+export function add(req, res, next) {
+  if (req.user && (req.user.role === UserRoles.Admin) || (req.user.role === UserRoles.Manager)) {
+    User.findOne({ where: { email: req.body.email } }).then((existingUser) => {
+      if (existingUser) {
+        return res.sendStatus(409);
+      }
+
+      const user = User.build({
+        email: req.body.email,
+        password: req.body.password,
+        role: req.body.role
+      });
+
+      return user.save().then(() => {
+        res.status(200).send('OK');
+      });
+    }).catch(err =>
+      next(err)
+    )
+  } else {
+    res.status(503).send('Not authorized.');
+  }
+}
+
 export function remove(req, res) {
   if (req.user && (req.user.role === UserRoles.Admin) || (req.user.role === UserRoles.Manager)) {
     User.destroy({ where: { id: req.params.id } }).then(() => {
@@ -96,6 +120,7 @@ export default {
   login,
   logout,
   signUp,
+  add,
   all,
   remove,
   update

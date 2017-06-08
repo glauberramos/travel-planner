@@ -116,7 +116,7 @@ export function createUser(data) {
   return (dispatch) => {
     dispatch(beginSignUp());
 
-    return authService().signUp(data)
+    return userService().createUser(data)
       .then((response) => {
           dispatch(crateUserSuccess(data));
       })
