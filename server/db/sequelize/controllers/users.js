@@ -2,14 +2,23 @@ import passport from 'passport';
 import { Models } from '../models';
 
 const User = Models.User;
+const UserRoles = {
+  User: 'user',
+  Manager: 'manager',
+  Admin: 'admin'
+}
 
 export function all(req, res) {
-  User.findAll().then((users) => {
-    res.json(users);
-  }).catch((err) => {
-    console.log(err);
-    res.status(500).send('Error in first query');
-  });
+  if (req.user && (req.user.role === UserRoles.Admin)) {
+    User.findAll().then((users) => {
+      res.json(users);
+    }).catch((err) => {
+      console.log(err);
+      res.status(500).send('Error in first query');
+    });
+  } else {
+    res.status(503).send('Not authorized.');
+  }
 }
 
 export function login(req, res, next) {
@@ -55,24 +64,32 @@ export function signUp(req, res, next) {
 }
 
 export function remove(req, res) {
-  User.destroy({ where: { id: req.params.id } }).then(() => {
-    res.status(200).send('Removed Successfully');
-  }).catch((err) => {
-    console.log(err);
-    res.status(500).send('We failed to delete for some reason');
-  });
+  if (req.user && (req.user.role === UserRoles.Admin)) {
+    User.destroy({ where: { id: req.params.id } }).then(() => {
+      res.status(200).send('Removed Successfully');
+    }).catch((err) => {
+      console.log(err);
+      res.status(500).send('We failed to delete for some reason');
+    });
+  } else {
+    res.status(503).send('Not authorized.');
+  }
 }
 
 export function update(req, res) {
-  const query = { id: req.params.id };
-  const data = req.body;
+  if (req.user && (req.user.role === UserRoles.Admin)) {
+    const query = { id: req.params.id };
+    const data = req.body;
 
-  User.update(data, { where: query }).then(() => {
-    res.status(200).send('Updated successfully');
-  }).catch((err) => {
-    console.log(err);
-    res.status(500).send('We failed to save for some reason');
-  });
+    User.update(data, { where: query }).then(() => {
+      res.status(200).send('Updated successfully');
+    }).catch((err) => {
+      console.log(err);
+      res.status(500).send('We failed to save for some reason');
+    });
+  } else {
+    res.status(503).send('Not authorized.');
+  }
 }
 
 export default {
