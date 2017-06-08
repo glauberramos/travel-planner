@@ -17,7 +17,9 @@ const Navigation = ({ user, logOut }) => {
     return (
       <nav className={cx('navigation')} role="navigation">
         <Link to="/" className={cx('item', 'logo')} activeClassName={cx('active')}>Travel Planner</Link>
-        <Link className={cx('item')} to="/trips">Trips</Link>
+        { user.authenticated ? (
+          <Link className={cx('item')} to="/trips">Trips</Link>
+        ) : '' }
         { usersTab }
         { user.authenticated ? (
           <Link onClick={logOut} className={cx('item')} to="/">Logout</Link>

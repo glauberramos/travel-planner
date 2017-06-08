@@ -3,7 +3,6 @@ import sequelizeConfig from '../sequelize_config';
 import { ENV } from '../../../../config/env';
 import tokenModel from './tokens';
 import travelModel from './travels';
-import topicModel from './topics';
 import userModel from './users';
 
 const config = sequelizeConfig[ENV];
@@ -14,7 +13,6 @@ const dbUrl = process.env[config.use_env_variable];
 const sequelize = dbUrl ? new Sequelize(dbUrl) : new Sequelize(config.database, config.username, config.password, config);
 
 db.Token = sequelize.import('Token', tokenModel);
-db.Topic = sequelize.import('Topic', topicModel);
 db.User = sequelize.import('User', userModel);
 db.Travel = sequelize.import('Travel', travelModel);
 
