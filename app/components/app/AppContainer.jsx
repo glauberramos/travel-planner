@@ -7,7 +7,7 @@ import styles from '../../css/main';
 
 const cx = classNames.bind(styles);
 
-const App = ({ children }) => {
+const AppContainer = ({ children }) => {
   return (
     <div className={cx('app')}>
       <Navigation />
@@ -17,8 +17,8 @@ const App = ({ children }) => {
   );
 };
 
-App.propTypes = {
+AppContainer.propTypes = {
   children: PropTypes.object
 };
 
-export default App;
+export default AppContainer;

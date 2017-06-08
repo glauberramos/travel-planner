@@ -1,6 +1,6 @@
 import React from 'react';
 import Page from '../pages/Page';
-import AppContainer from '../components/app/App';
+import AppContainer from '../components/app/AppContainer';
 import { title, meta, link } from './assets';
 
 const App = props => (
