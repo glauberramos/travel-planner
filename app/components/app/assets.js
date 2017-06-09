@@ -13,5 +13,5 @@ const metaAssets = () => {
   ];
 };
 
-export const title = 'Travel planner';
+export const title = 'TriPlanner';
 export const meta = metaAssets();
