@@ -115,8 +115,6 @@ export function update(req, res) {
           res.status(500).send('We failed to save for some reason');
         });
       }
-    }).catch((err) => {
-      res.status(500).send('User not found');
     });
   } else {
     res.status(503).send('Not authorized.');

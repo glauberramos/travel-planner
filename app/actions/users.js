@@ -149,14 +149,18 @@ export function deleteUser(id) {
 }
 
 export function updateUser(id, email, role, password) {
+  let data;
+
+  if (password === '' || password === undefined) {
+    data = { email: email, role: role };
+  } else {
+    data = { email: email, role: role, password: password }
+  }
+
   return (dispatch) => {
     return userService().updateUser({
       id,
-      data: {
-        email: email,
-        role: role,
-        password: password
-      }
+      data: data
       }).then((response) => {
           dispatch(updateSuccess(id));
       })
