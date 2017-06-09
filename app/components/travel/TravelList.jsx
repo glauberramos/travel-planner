@@ -1,19 +1,20 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import TravelItem from './TravelItem';
+import classNames from 'classnames/bind';
+import styles from './Travel.css';
+const cx = classNames.bind(styles);
 
 export default class TravelList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      destinationFilter: ''
+      filterTrip: ''
     };
   }
 
   updateFilter(event) {
-    this.setState({
-      destinationFilter: event.target.value
-    })
+    this.setState({ filterTrip: event.target.value });
   }
 
   render() {
@@ -21,9 +22,12 @@ export default class TravelList extends Component {
       return new Date(a.startDate) - new Date(b.startDate);
     };
 
-    const travelListItems = this.props.travels.filter(travel => {
-      return travel.destination && travel.destination.includes(this.state.destinationFilter);
-    }).sort(sortArray).map((travel, key) => {
+    const filteredList = this.props.travels.filter(travel => {
+      return travel.destination.toLowerCase().includes(this.state.filterTrip.toLowerCase()) ||
+        travel.comments.toLowerCase().includes(this.state.filterTrip.toLowerCase());
+    });
+
+    const travelListItems = filteredList.sort(sortArray).map((travel, key) => {
         return (
           <TravelItem
             id={ travel.id }
@@ -39,7 +43,7 @@ export default class TravelList extends Component {
 
     return (
       <div>
-        <input value={ this.state.destinationFilter } placeholder="Filter destination" onChange={ this.updateFilter.bind(this) } />
+        <input className={cx('filter')} value={ this.state.filterTrip } placeholder="Filter your trips by destination or comments" onChange={ this.updateFilter.bind(this) } />
         <br/>
         { travelListItems }
       </div>

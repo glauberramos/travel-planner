@@ -31,8 +31,8 @@
 }
 
 .create-box {
-  width: 95%;
-  padding: 15px;
+  width: 100%;
+  padding: 20px;
   margin-top: 30px;
   margin-bottom: 30px;
   background: white;
@@ -56,12 +56,13 @@
   display: block;
   margin-bottom: 15px;
   font-size: 1.8em;
-  color: #2196f3;
+  color: #9c27b0;
 }
 
 .header {
   margin-top: 0;
   font-size: 2em;
+  font-weight: normal;
   color: #2196f3;
 }
 
@@ -72,6 +73,30 @@
   font-size: 1.2em;
   vertical-align: top;
   border: 1px solid #ccc;
+}
+
+@media (max-width: 1024px) {
+  .input-create {
+    width: 29%;
+    margin-right: 2%;
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .input-create {
+    width: 48%;
+    margin-right: 2%;
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 425px) {
+  .input-create {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
 }
 
 .date {
@@ -119,6 +144,22 @@
 .save {
   color: white;
   background: #00c853;
+}
+
+.filter {
+  width: 100%;
+  padding: 15px 20px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-size: 1.2em;
+  color: white;
+  background: #2196f3;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+}
+
+.filter::placeholder {
+  color: white;
 }
 
 .save:hover {

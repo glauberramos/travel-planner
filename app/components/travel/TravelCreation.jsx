@@ -57,7 +57,7 @@ export default class TravelCreation extends Component {
           onChange={this.updateEndDate.bind(this)}
           value={this.state.endDate} />
         <button
-          className={cx('button', 'primary', 'no-margin')}
+          className={cx('button', 'save', 'no-margin')}
           onClick={this.onSave.bind(this)}>
           Create Trip
         </button>
