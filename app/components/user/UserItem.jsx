@@ -59,7 +59,7 @@ export default class UserItem extends Component {
       <div className={cx('item', { editing: this.state.editing })}>
         <div className={cx('info')}>
           <span>{ this.state.email }</span>
-          <span>{ this.state.role }</span>
+          <span className={cx('role')}>{ this.state.role }</span>
           <br />
           <button className={cx('button', 'primary')} onClick={ this.toggleEdit.bind(this) }>
             Edit
