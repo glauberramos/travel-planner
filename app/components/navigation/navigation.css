@@ -18,7 +18,6 @@
   text-decoration: none;
   vertical-align: bottom;
   border-bottom: 5px solid #9c27b0;
-  transition: border-color 0.5s;
 }
 
 .logo {
@@ -27,4 +26,5 @@
 
 .active {
   border-color: color(#2196f3 lightness(+ 10%));
+  transition: border-color 0.5s;
 }
