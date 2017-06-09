@@ -181,18 +181,18 @@
 
 .filter {
   width: 100%;
-  padding: 15px 20px;
+  padding: 10px 20px;
   margin-top: 20px;
   margin-bottom: 20px;
   font-size: 1.2em;
-  color: white;
-  background: #2196f3;
-  border: 1px solid color(#2196f3 blackness(+ 5%));
+  color: #333;
+  background: #ddd;
+  border: 1px solid color(#ddd blackness(+ 5%));
   border-radius: 2px;
 }
 
 .filter::placeholder {
-  color: white;
+  color: #555;
 }
 
 .save:hover {
