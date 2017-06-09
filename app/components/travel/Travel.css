@@ -30,6 +30,16 @@
   }
 }
 
+.create-box {
+  width: 95%;
+  padding: 15px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+}
+
 .edit {
   display: none;
 }
@@ -47,6 +57,21 @@
   margin-bottom: 15px;
   font-size: 1.8em;
   color: #2196f3;
+}
+
+.header {
+  margin-top: 0;
+  font-size: 2em;
+  color: #2196f3;
+}
+
+.input-create {
+  width: 20%;
+  padding: 7px;
+  margin-right: 10px;
+  font-size: 1.2em;
+  vertical-align: top;
+  border: 1px solid #ccc;
 }
 
 .date {
@@ -81,14 +106,14 @@
 }
 
 .button {
-  padding: 10px 13px;
+  padding: 11px 13px;
   margin-top: 20px;
   margin-right: 7px;
   font-size: 1em;
   cursor: pointer;
   background: none;
   border: 1px solid;
-  border-radius: 2px;;
+  border-radius: 2px;
 }
 
 .save {
@@ -112,6 +137,10 @@
 .primary {
   color: white;
   background: #2196f3;
+}
+
+.no-margin {
+  margin: 0;
 }
 
 .primary:hover {
