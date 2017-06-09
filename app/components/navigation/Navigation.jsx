@@ -4,23 +4,23 @@ import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import classNames from 'classnames/bind';
 import { logOut } from '../../actions/users';
-import styles from '../../css/components/navigation';
+import styles from './navigation.css';
 import { UserRoles } from '../../utils/userRoles';
 
 const cx = classNames.bind(styles);
 
 const Navigation = ({ user, logOut }) => {
     const usersTab = ((user.userRole ===  UserRoles.Manager) || (user.userRole ===  UserRoles.Admin)) && user.authenticated ? (
-      <Link className={cx('item')} to="/users">Users</Link>
+      <Link className={cx('item')} activeClassName={cx('active')} to="/users">Users</Link>
     ) : '';
 
     return (
       <nav className={cx('navigation')} role="navigation">
-        <Link to="/" className={cx('item', 'logo')} activeClassName={cx('active')}>
+        <Link to="/" className={cx('item', 'logo')}>
           <svg className={cx('svg')} xmlns="http://www.w3.org/2000/svg" version="1.1" xmlnsXlink="http://www.w3.org/1999/xlink" preserveAspectRatio="none" x="0px" y="0px" width="50px" height="50px" viewBox="150 0 300 350">
             <defs>
               <g id="Layer0_0_FILL">
-                <path fill="#0099FF" stroke="none" d="
+                <path fill="#fff" stroke="none" d="
                 M 300.55 193.75
                 Q 310.5 183.75 310.4 169.7 310.45 155.65 300.5 145.7 290.5 135.65 276.5 135.65
                 L 276.5 169.75 252.45 145.7
@@ -44,7 +44,7 @@ const Navigation = ({ user, logOut }) => {
           TriPlanner
         </Link>
         { ((user.userRole ===  UserRoles.User) || (user.userRole ===  UserRoles.Admin)) && user.authenticated ? (
-          <Link className={cx('item')} to="/trips">Trips</Link>
+          <Link className={cx('item')} to="/trips" activeClassName={cx('active')}>Trips</Link>
         ) : '' }
         { usersTab }
         { user.authenticated ? (

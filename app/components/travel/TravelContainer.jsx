@@ -6,6 +6,9 @@ import TravelCreation from './TravelCreation';
 import TravelList from './TravelList';
 import { createTravel, deleteTravel, updateTravel } from '../../actions/travels';
 import { UserRoles } from '../../utils/userRoles';
+import classNames from 'classnames/bind';
+import styles from './travel';
+const cx = classNames.bind(styles);
 
 class Travel extends Component {
   render() {
@@ -13,7 +16,7 @@ class Travel extends Component {
     return (
       <div>
         { ((userRole === UserRoles.User) || (userRole === UserRoles.Admin)) ?
-          ( <div>
+          ( <div className={cx('container')}>
               <TravelCreation createTravel={ createTravel } />
               <TravelList travels={ travels }
                 deleteTravel={ deleteTravel }

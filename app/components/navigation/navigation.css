@@ -1,0 +1,30 @@
+.navigation {
+  padding: 0 40px;
+  background: #9c27b0;
+}
+
+.svg {
+  position: relative;
+  top: 10px;
+}
+
+.item {
+  display: inline-block;
+  padding: 0 10px 16px 10px;
+  margin-right: 10px;
+  margin-left: 10px;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: bottom;
+  border-bottom: 5px solid #9c27b0;
+  transition: border-color 0.5s;
+}
+
+.logo {
+  font-size: 1.7em;
+}
+
+.active {
+  border-color: #2196f3;
+}

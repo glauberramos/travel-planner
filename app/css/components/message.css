@@ -5,10 +5,10 @@
 .message {
   display: none;
   padding: 12px 0;
-  border-radius: var(--globalRadius);
-  color: var(--colorBlack);
   font-size: var(--fontMedium);
+  color: var(--colorBlack);
   text-align: center;
+  border-radius: var(--globalRadius);
 }
 
 .show {
@@ -16,6 +16,6 @@
 }
 
 .success {
-  background-color: var(--colorSalem);
   color: var(--colorWhite);
+  background-color: var(--colorSalem);
 }
