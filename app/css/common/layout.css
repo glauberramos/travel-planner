@@ -1,7 +1,0 @@
-:root {
-  background: #f7f7f7;
-
-  --flexNotMoreThan200 {
-    flex: 0 1 200px;
-  }
-}

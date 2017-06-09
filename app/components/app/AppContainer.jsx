@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import Navigation from '../navigation/Navigation';
 import Message from './Message';
-import styles from '../../css/main';
+import styles from './main.css';
 
 const cx = classNames.bind(styles);
 
