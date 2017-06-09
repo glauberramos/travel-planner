@@ -105,11 +105,18 @@ export function update(req, res) {
     const query = { id: req.params.id };
     const data = req.body;
 
-    User.update(data, { where: query }).then(() => {
-      res.status(200).send('Updated successfully');
+    User.findOne({ where: query}).then((existingUser) => {
+      if (existingUser) {
+        existingUser.updateAttributes(data)
+        .success(function () {
+          res.status(200).send('Updated successfully');
+        }).catch((err) => {
+          console.log(err);
+          res.status(500).send('We failed to save for some reason');
+        });
+      }
     }).catch((err) => {
-      console.log(err);
-      res.status(500).send('We failed to save for some reason');
+      res.status(500).send('User not found');
     });
   } else {
     res.status(503).send('Not authorized.');

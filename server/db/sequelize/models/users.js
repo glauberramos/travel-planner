@@ -3,8 +3,6 @@ import bcryptNode from 'bcrypt-nodejs';
 
 const bcrypt = Promise.promisifyAll(bcryptNode);
 
-// Other oauthtypes to be added
-
 /* eslint-disable no-param-reassign */
 function hashPassword(user) {
   if (!user.changed('password')) return null;
