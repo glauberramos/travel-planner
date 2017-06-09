@@ -172,7 +172,7 @@
 
 .timeline {
   display: block;
-  padding: 10px 0;
+  padding: 12px 0;
   color: white;
   text-align: center;
   background: #2196f3;
@@ -186,8 +186,8 @@
   margin-bottom: 20px;
   font-size: 1.2em;
   color: #333;
-  background: #ddd;
-  border: 1px solid color(#ddd blackness(+ 5%));
+  background: #ececec;
+  border: 1px solid color(#ececec blackness(+ 5%));
   border-radius: 2px;
 }
 
