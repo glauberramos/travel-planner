@@ -56,6 +56,7 @@ export default class UserCreation extends Component {
           <input
             className={cx('input-create')}
             type="password"
+            placeholder="Password"
             required
             onChange={this.updatePassword.bind(this)}
             value={this.state.password} />

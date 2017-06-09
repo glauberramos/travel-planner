@@ -82,6 +82,7 @@ export default class UserItem extends Component {
             <input
               className={cx('input', 'margin-right')}
               type="password"
+              placeholder="Password"
               required
               onChange={this.updatePassword.bind(this)}
               value={this.state.password} />
