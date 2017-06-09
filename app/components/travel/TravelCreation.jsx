@@ -28,7 +28,8 @@ export default class TravelCreation extends Component {
     this.setState({ endDate: event.target.value });
   }
 
-  onSave() {
+  onSave(event) {
+    event.preventDefault();
     this.props.createTravel(this.state.destination, this.state.comments, this.state.startDate, this.state.endDate);
     this.setState({ destination: '', comments: '', startDate: '', endDate: '' });
   }
@@ -37,31 +38,35 @@ export default class TravelCreation extends Component {
     return (
       <div className={cx('create-box')}>
         <h1 className={cx('header')}>Plan your next trip!</h1>
-        <input
-          className={cx('input-create')}
-          placeholder="Destination"
-          onChange={this.updateDestination.bind(this)}
-          value={this.state.destination} />
-        <input
-          className={cx('input-create')}
-          placeholder="Comments"
-          onChange={this.updateComments.bind(this)}
-          value={this.state.comments} />
-        <input
-          className={cx('input-create')}
-          type="date"
-          onChange={this.updateStartDate.bind(this)}
-          value={this.state.startDate} />
-        <input
-          className={cx('input-create')}
-          type="date"
-          onChange={this.updateEndDate.bind(this)}
-          value={this.state.endDate} />
-        <button
-          className={cx('button', 'save', 'no-margin')}
-          onClick={this.onSave.bind(this)}>
-          Create Trip
-        </button>
+        <form onSubmit={ this.onSave.bind(this) }>
+          <input
+            className={cx('input-create')}
+            required
+            placeholder="Destination"
+            onChange={this.updateDestination.bind(this)}
+            value={this.state.destination} />
+          <input
+            className={cx('input-create')}
+            placeholder="Comments"
+            onChange={this.updateComments.bind(this)}
+            value={this.state.comments} />
+          <input
+            className={cx('input-create')}
+            required
+            type="date"
+            onChange={this.updateStartDate.bind(this)}
+            value={this.state.startDate} />
+          <input
+            className={cx('input-create')}
+            required
+            type="date"
+            onChange={this.updateEndDate.bind(this)}
+            value={this.state.endDate} />
+          <input
+            type="submit"
+            className={cx('button', 'save', 'no-margin')}
+            value="Create Trip" />
+        </form>
       </div>
     );
   }

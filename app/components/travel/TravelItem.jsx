@@ -37,7 +37,8 @@ export default class TravelItem extends Component {
     this.props.deleteTravel(this.props.id);
   }
 
-  onUpdate() {
+  onUpdate(event) {
+    event.preventDefault();
     this.toggleEdit();
     this.props.updateTravel(this.props.id,
       this.state.destination,
@@ -68,35 +69,38 @@ export default class TravelItem extends Component {
           </button>
         </div>
         <div className={cx('edit')}>
-          <input
-            className={cx('input')}
-            placeholder="Trip destination"
-            onChange={this.updateDestination.bind(this)}
-            value={this.state.destination} />
-          <input
-            className={cx('input', 'date-input', 'margin-right')}
-            type="date"
-            onChange={this.updateStartDate.bind(this)}
-            value={this.state.startDate} />
-          <input
-            className={cx('input', 'date-input')}
-            type="date"
-            onChange={this.updateEndDate.bind(this)}
-            value={this.state.endDate} />
-          <textarea
-            className={cx('input')}
-            placeholder="Trip comments"
-            onChange={this.updateComments.bind(this)}
-            value={this.state.comments} />
-          <button className={cx('button', 'save')}onClick={ this.onUpdate.bind(this) }>
-            Save
-          </button>
-          <button className={cx('button', 'delete')} onClick={ this.onDelete.bind(this) }>
-            Delete
-          </button>
-          <button className={cx('button', 'primary')} onClick={ this.toggleEdit.bind(this) }>
-            Cancel
-          </button>
+          <form onSubmit={ this.onUpdate.bind(this) }>
+            <input
+              className={cx('input')}
+              placeholder="Trip destination"
+              required
+              onChange={this.updateDestination.bind(this)}
+              value={this.state.destination} />
+            <input
+              className={cx('input', 'date-input', 'margin-right')}
+              type="date"
+              required
+              onChange={this.updateStartDate.bind(this)}
+              value={this.state.startDate} />
+            <input
+              className={cx('input', 'date-input')}
+              type="date"
+              required
+              onChange={this.updateEndDate.bind(this)}
+              value={this.state.endDate} />
+            <textarea
+              className={cx('input')}
+              placeholder="Trip comments"
+              onChange={this.updateComments.bind(this)}
+              value={this.state.comments} />
+            <input type="submit" value="Save" className={cx('button', 'save')} />
+            <button className={cx('button', 'delete')} onClick={ this.onDelete.bind(this) }>
+              Delete
+            </button>
+            <button className={cx('button', 'primary')} onClick={ this.toggleEdit.bind(this) }>
+              Cancel
+            </button>
+          </form>
         </div>
       </div>
     );
