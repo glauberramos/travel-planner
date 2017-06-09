@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
-import { formatDate, formatDateBeautifully } from '../../utils/dateFormat';
+import { formatDate, formatDateBeautifully, daysUntil } from '../../utils/dateFormat';
 import styles from './travel';
 const cx = classNames.bind(styles);
 
@@ -53,9 +53,12 @@ export default class TravelItem extends Component {
   }
 
   render() {
+    const startsIn = daysUntil(new Date(this.state.startDate));
+
     return (
       <div className={cx('item', { editing: this.state.editing })}>
-        <div className={cx('info')}>
+        { startsIn > 0 ? ( <span className={cx('timeline')}>Starts in: { startsIn } days</span> ) : '' }
+        <div className={cx('info')}>  
           <span className={cx('destination')}>{ this.state.destination }</span>
           <span className={cx('date')}>{ formatDateBeautifully(new Date(this.state.startDate)) } - { formatDateBeautifully(new Date(this.state.endDate)) }</span>
           <span className={cx('comments')}>{ this.state.comments }</span>

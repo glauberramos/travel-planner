@@ -18,3 +18,11 @@ export function formatDateBeautifully(date) {
 
   return day + ' ' + monthNames[month] + ' ' + year;
 }
+
+export function daysUntil(date) {
+  var now = new Date(),
+      dateEnd = new Date(date.getFullYear(), date.getMonth(), date.getDate() + 1),
+      days = (dateEnd - now) / 1000/60/60/24;
+
+  return Math.round(days);
+}

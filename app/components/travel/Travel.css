@@ -1,7 +1,6 @@
 .item {
   display: inline-block;
   width: 23.5%;
-  padding: 20px;
   margin-right: 2%;
   margin-bottom: 2%;
   background: white;
@@ -60,6 +59,11 @@
 
 .edit {
   display: none;
+}
+
+.info,
+.edit {
+  padding: 20px;
 }
 
 .editing .edit {
@@ -166,16 +170,25 @@
   background: #00c853;
 }
 
+.timeline {
+  display: block;
+  padding: 7px 0;
+  color: white;
+  text-align: center;
+  background: #2196f3;
+  border-radius: 2px 2px 0 0;
+}
+
 .filter {
   width: 100%;
   padding: 15px 20px;
   margin-top: 20px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   font-size: 1.2em;
   color: white;
   background: #2196f3;
   border: 1px solid color(#2196f3 blackness(+ 5%));
-  border-radius: 2px;;
+  border-radius: 2px;
 }
 
 .filter::placeholder {
