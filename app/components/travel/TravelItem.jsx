@@ -60,7 +60,7 @@ export default class TravelItem extends Component {
           <span className={cx('date')}>{ formatDateBeautifully(new Date(this.state.startDate)) } - { formatDateBeautifully(new Date(this.state.endDate)) }</span>
           <span className={cx('comments')}>{ this.state.comments }</span>
           <br />
-          <button className={cx('button')} onClick={ this.toggleEdit.bind(this) }>
+          <button className={cx('button', 'primary')} onClick={ this.toggleEdit.bind(this) }>
             Edit
           </button>
         </div>
@@ -71,12 +71,12 @@ export default class TravelItem extends Component {
             onChange={this.updateDestination.bind(this)}
             value={this.state.destination} />
           <input
-            className={cx('input')}
+            className={cx('input', 'date-input', 'margin-right')}
             type="date"
             onChange={this.updateStartDate.bind(this)}
             value={this.state.startDate} />
           <input
-            className={cx('input')}
+            className={cx('input', 'date-input')}
             type="date"
             onChange={this.updateEndDate.bind(this)}
             value={this.state.endDate} />
@@ -85,13 +85,13 @@ export default class TravelItem extends Component {
             placeholder="Trip comments"
             onChange={this.updateComments.bind(this)}
             value={this.state.comments} />
-          <button className={cx('button')} onClick={ this.onDelete.bind(this) }>
-            Delete
-          </button>
-          <button className={cx('button')}onClick={ this.onUpdate.bind(this) }>
+          <button className={cx('button', 'save')}onClick={ this.onUpdate.bind(this) }>
             Save
           </button>
-          <button className={cx('button')} onClick={ this.toggleEdit.bind(this) }>
+          <button className={cx('button', 'delete')} onClick={ this.onDelete.bind(this) }>
+            Delete
+          </button>
+          <button className={cx('button', 'primary')} onClick={ this.toggleEdit.bind(this) }>
             Cancel
           </button>
         </div>
