@@ -97,9 +97,6 @@ export default class TravelItem extends Component {
             <button className={cx('button', 'delete')} onClick={ this.onDelete.bind(this) }>
               Delete
             </button>
-            <button className={cx('button', 'primary')} onClick={ this.toggleEdit.bind(this) }>
-              Cancel
-            </button>
           </form>
         </div>
       </div>
