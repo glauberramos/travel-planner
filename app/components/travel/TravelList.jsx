@@ -23,8 +23,10 @@ export default class TravelList extends Component {
     };
 
     const filteredList = this.props.travels.filter(travel => {
-      return travel.destination.toLowerCase().includes(this.state.filterTrip.toLowerCase()) ||
-        travel.comments.toLowerCase().includes(this.state.filterTrip.toLowerCase());
+      if (travel.destination !== undefined && travel.comments !== undefined) {
+        return travel.destination.toLowerCase().includes(this.state.filterTrip.toLowerCase()) ||
+          travel.comments.toLowerCase().includes(this.state.filterTrip.toLowerCase());
+      }
     });
 
     const travelListItems = filteredList.sort(sortArray).map((travel, key) => {
