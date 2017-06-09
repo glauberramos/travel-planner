@@ -30,6 +30,7 @@ export default class TravelCreation extends Component {
 
   onSave() {
     this.props.createTravel(this.state.destination, this.state.comments, this.state.startDate, this.state.endDate);
+    this.setState({ destination: '', comments: '', startDate: '', endDate: '' });
   }
 
   render() {
