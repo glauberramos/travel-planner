@@ -66,18 +66,22 @@ export default class TravelItem extends Component {
         </div>
         <div className={cx('edit')}>
           <input
+            className={cx('input')}
             placeholder="Trip destination"
             onChange={this.updateDestination.bind(this)}
             value={this.state.destination} />
           <input
+            className={cx('input')}
             type="date"
             onChange={this.updateStartDate.bind(this)}
             value={this.state.startDate} />
           <input
+            className={cx('input')}
             type="date"
             onChange={this.updateEndDate.bind(this)}
             value={this.state.endDate} />
           <textarea
+            className={cx('input')}
             placeholder="Trip comments"
             onChange={this.updateComments.bind(this)}
             value={this.state.comments} />
