@@ -6,13 +6,16 @@ import UserList from './UserList';
 import { createUser, deleteUser, updateUser } from '../../actions/users';
 import { Link } from 'react-router';
 import { UserRoles } from '../../utils/userRoles';
+import classNames from 'classnames/bind';
+import styles from './user.css';
+const cx = classNames.bind(styles);
 
 class User extends Component {
   render() {
     return (
       <div>
         { ((this.props.userRole === UserRoles.Manager) || (this.props.userRole === UserRoles.Admin)) ?
-          ( <div>
+          ( <div className={cx('container')}>
               <UserCreation createUser={ this.props.createUser } />
               <UserList users={ this.props.users }
                 deleteUser={ this.props.deleteUser }

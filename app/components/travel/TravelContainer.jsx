@@ -7,7 +7,7 @@ import TravelList from './TravelList';
 import { createTravel, deleteTravel, updateTravel } from '../../actions/travels';
 import { UserRoles } from '../../utils/userRoles';
 import classNames from 'classnames/bind';
-import styles from './travel';
+import styles from './travel.css';
 const cx = classNames.bind(styles);
 
 class Travel extends Component {

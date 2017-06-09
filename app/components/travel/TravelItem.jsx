@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import { formatDate, formatDateBeautifully, daysUntil } from '../../utils/dateFormat';
-import styles from './travel';
+import styles from './travel.css';
 const cx = classNames.bind(styles);
 
 export default class TravelItem extends Component {
