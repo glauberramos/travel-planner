@@ -38,6 +38,7 @@ export default class TravelItem extends Component {
   }
 
   onUpdate() {
+    this.toggleEdit();
     this.props.updateTravel(this.props.id,
       this.state.destination,
       this.state.comments,

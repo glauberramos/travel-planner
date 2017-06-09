@@ -50,7 +50,14 @@ export function add(req, res) {
 
 export function update(req, res) {
   if ((req.user !== undefined) && ((req.user.role === UserRoles.Admin) || (req.user.role === UserRoles.User))) {
-    const query = { id: req.params.id, userId: req.user.id };
+    let query;
+
+    if (req.user.role === UserRoles.User) {
+      query = { id: req.params.id, userId: req.user.id };
+    } else {
+      query = { id: req.params.id };
+    }
+
     const data = req.body;
 
     Travel.update(data, { where: query }).then(() => {
@@ -66,7 +73,15 @@ export function update(req, res) {
 
 export function remove(req, res) {
   if ((req.user !== undefined) && ((req.user.role === UserRoles.Admin) || (req.user.role === UserRoles.User))) {
-    Travel.destroy({ where: { id: req.params.id, userId: req.user.id } }).then(() => {
+    let query;
+
+    if (req.user.role === UserRoles.User) {
+      query = { id: req.params.id, userId: req.user.id };
+    } else {
+      query = { id: req.params.id };
+    }
+
+    Travel.destroy({ where: query }).then(() => {
       res.status(200).send('Removed Successfully');
     }).catch((err) => {
       console.log(err);
