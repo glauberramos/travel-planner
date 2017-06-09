@@ -32,6 +32,7 @@ export default class TravelCreation extends Component {
   render() {
     return (
       <div>
+        <h1>What's your next destination?</h1>
         <input
           placeholder="Trip destination"
           onChange={this.updateDestination.bind(this)}

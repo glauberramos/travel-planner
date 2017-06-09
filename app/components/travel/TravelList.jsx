@@ -17,9 +17,13 @@ export default class TravelList extends Component {
   }
 
   render() {
+    const sortArray = (a, b) => {
+      return new Date(a.startDate) - new Date(b.startDate);
+    };
+
     const travelListItems = this.props.travels.filter(travel => {
       return travel.destination && travel.destination.includes(this.state.destinationFilter);
-      }).map((travel, key) => {
+    }).sort(sortArray).map((travel, key) => {
         return (
           <TravelItem
             id={ travel.id }
