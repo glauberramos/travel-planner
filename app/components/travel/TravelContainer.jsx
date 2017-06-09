@@ -24,7 +24,7 @@ class Travel extends Component {
             </div>
           ) : (
             <Link to="/users">
-              <button>Manage Users</button>
+              <button className={cx('button', 'primary')}>Manage Users</button>
             </Link> )
           }
       </div>
