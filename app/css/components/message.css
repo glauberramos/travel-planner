@@ -1,14 +1,10 @@
-@import '../settings';
-@import '../common/colors';
-@import '../common/typography';
-
 .message {
   display: none;
   padding: 12px 0;
-  font-size: var(--fontMedium);
-  color: var(--colorBlack);
+  font-size: 1em;
+  color: #333;
   text-align: center;
-  border-radius: var(--globalRadius);
+  border-radius: 3px;
 }
 
 .show {
@@ -16,6 +12,6 @@
 }
 
 .success {
-  color: var(--colorWhite);
-  background-color: var(--colorSalem);
+  color: white;
+  background-color: #00c853;
 }

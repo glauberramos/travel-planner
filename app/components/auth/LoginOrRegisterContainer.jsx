@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import classNames from 'classnames/bind';
 import { connect } from 'react-redux';
 import { manualLogin, signUp, toggleLoginMode } from '../../actions/users';
-import styles from '../../css/components/login';
+import styles from './login.css';
 import { UserRoles } from '../../utils/userRoles';
 
 const cx = classNames.bind(styles);
@@ -35,9 +35,9 @@ class LoginOrRegister extends Component {
     if (isLogin) {
       return (
         <div className={cx('header')}>
-          <h1 className={cx('heading')}>Login with Email</h1>
+          <h1 className={cx('heading')}>Login</h1>
           <div className={cx('alternative')}>
-            Not what you want?
+            Not registered?
             <a
               className={cx('alternative-link')}
               onClick={toggleLoginMode}
@@ -49,7 +49,7 @@ class LoginOrRegister extends Component {
 
     return (
       <div className={cx('header')}>
-        <h1 className={cx('heading')}>Register with Email</h1>
+        <h1 className={cx('heading')}>Register</h1>
         <div className={cx('alternative')}>
           Already have an account?
           <a
@@ -86,10 +86,6 @@ class LoginOrRegister extends Component {
                ref="password"
                 placeholder="password"
               />
-              <div className={cx('hint')}>
-                <div>Hint</div>
-                <div>email: example@ninja.com password: ninja</div>
-              </div>
               <p
                 className={cx('message', {
                 'message-show': message && message.length > 0
