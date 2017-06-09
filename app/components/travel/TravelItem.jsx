@@ -94,9 +94,12 @@ export default class TravelItem extends Component {
               onChange={this.updateComments.bind(this)}
               value={this.state.comments} />
             <input type="submit" value="Save" className={cx('button', 'save')} />
-            <button className={cx('button', 'delete')} onClick={ this.onDelete.bind(this) }>
+            <a className={cx('button', 'delete')} onClick={ this.onDelete.bind(this) }>
               Delete
-            </button>
+            </a>
+            <a className={cx('button', 'primary')} onClick={ this.toggleEdit.bind(this) }>
+              Cancel
+            </a>
           </form>
         </div>
       </div>

@@ -83,13 +83,15 @@ export default class UserItem extends Component {
               className={cx('input', 'margin-right')}
               type="password"
               placeholder="Password"
-              required
               onChange={this.updatePassword.bind(this)}
               value={this.state.password} />
             <input type="submit" value="Save" className={cx('button', 'save')} />
-            <button className={cx('button', 'delete')} onClick={ this.onDelete.bind(this) }>
+            <a className={cx('button', 'delete')} onClick={ this.onDelete.bind(this) }>
               Delete
-            </button>
+            </a>
+            <a className={cx('button', 'primary')} onClick={ this.toggleEdit.bind(this) }>
+              Cancel
+            </a>
           </form>
         </div>
       </div>
