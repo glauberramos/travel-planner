@@ -67,7 +67,8 @@
   margin-bottom: 10px;
   font-size: 1.1em;
   background: none;
-  border: 1px solid #aaa;
+  border: 1px solid #ccc;
+  border-radius: 2px;
 }
 
 .date-input {
@@ -80,7 +81,7 @@
 }
 
 .button {
-  padding: 10px 12px;
+  padding: 10px 13px;
   margin-top: 20px;
   margin-right: 7px;
   font-size: 1em;
@@ -95,12 +96,24 @@
   background: #00c853;
 }
 
+.save:hover {
+  background: color(#00c853 blackness(+ 10%));
+}
+
 .delete {
   color: white;
   background: #df3e3e;
 }
 
+.delete:hover {
+  background: color(#df3e3e blackness(+ 10%));
+}
+
 .primary {
   color: white;
   background: #2196f3;
+}
+
+.primary:hover {
+  background: color(#2196f3 blackness(+ 10%));
 }
