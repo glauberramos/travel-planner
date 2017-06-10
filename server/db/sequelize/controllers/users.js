@@ -108,7 +108,7 @@ export function update(req, res) {
     User.findOne({ where: query}).then((existingUser) => {
       if (existingUser) {
         existingUser.updateAttributes(data)
-        .success(() => {
+        .then(() => {
           res.status(200).send('Updated successfully');
         }).catch((err) => {
           console.log(err);

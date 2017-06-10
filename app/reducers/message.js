@@ -11,6 +11,8 @@ export default function message(state = {
     case types.DISMISS_MESSAGE:
       return {...state, message: '', type: 'SUCCESS'};
     case types.SIGNUP_ERROR_USER:
+    case types.DESTROY_USER_ERROR:
+    case types.UPDATE_USER_ERROR:
       return {...state, message: action.message, type: 'ERROR'};
     default:
       return state;

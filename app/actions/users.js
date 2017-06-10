@@ -32,6 +32,13 @@ function updateError(message) {
   };
 }
 
+function destroyError(message) {
+  return {
+    type: types.DESTROY_USER_ERROR,
+    message
+  };
+}
+
 function loginError(message) {
   return {
     type: types.LOGIN_ERROR_USER,
@@ -50,6 +57,10 @@ function beginSignUp() {
   return { type: types.SIGNUP_USER };
 }
 
+function beginCreateUser() {
+  return { type: types.CREATE_USER };
+}
+
 function signUpSuccess(message, role) {
   return {
     type: types.SIGNUP_SUCCESS_USER,
@@ -58,7 +69,7 @@ function signUpSuccess(message, role) {
   };
 }
 
-function crateUserSuccess(data) {
+function createUserSuccess(data) {
   return {
     type: types.CREATE_USER_SUCCESS,
     data
@@ -113,13 +124,14 @@ export function signUp(data) {
 
 export function createUser(data) {
   return (dispatch) => {
-    dispatch(beginSignUp());
+    dispatch(beginCreateUser());
 
     return userService().createUser(data)
       .then(() => {
-          dispatch(crateUserSuccess(data));
+          dispatch(createUserSuccess(data));
       })
-      .catch(() => {
+      .catch((err) => {
+        console.log(err);
         dispatch(signUpError('Oops! Something went wrong when creating user'));
       });
   };
@@ -143,7 +155,10 @@ export function logOut() {
 export function deleteUser(id) {
   return (dispatch) => {
     return userService().deleteUser({ id })
-      .then(() => dispatch(destroy(id)));
+      .then(() => dispatch(destroy(id)))
+    .catch(() => {
+      dispatch(destroyError('Error while deleting user'));
+    });
   };
 }
 
@@ -157,12 +172,12 @@ export function updateUser(id, email, role, password) {
   }
 
   return (dispatch) => {
-    return userService().updateUser({
-      id,
-      data
-      }).then(() => {
-          dispatch(updateSuccess(id));
-      })
-      .catch(() => dispatch(updateError({error: 'Oops! Something went wrong and we couldn\'t edit user'})));
+    return userService().updateUser({ id, data })
+    .then(() => {
+      dispatch(updateSuccess(id));
+    })
+    .catch(() => {
+      dispatch(updateError('Oops! Something went wrong and we couldn\'t edit user'));
+    });
   };
 }

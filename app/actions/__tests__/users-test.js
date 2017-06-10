@@ -4,6 +4,7 @@ import expect from 'expect';
 import * as actions from '../users';
 import * as types from '../../utils/types';
 import createAuthServiceStub from '../../tests/helpers/createAuthServiceStub';
+import createUserServiceStub from '../../tests/helpers/createUserServiceStub';
 
 const middlewares = [thunk];
 const mockStore = configureStore(middlewares);
@@ -30,6 +31,12 @@ describe('Users Async Actions', () => {
   const data = {
     email: 'hello@world.com',
     password: '2BeOrNot2Be'
+  };
+
+  const dataCreate = {
+    email: 'hello@world.com',
+    password: '2BeOrNot2Be',
+    role: 'manager'
   };
 
   describe('manualLogin', () => {
@@ -145,7 +152,7 @@ describe('Users Async Actions', () => {
         stub.restore();
       });
 
-      it('should dispatch MANUAL_LOGIN_USER and LOGIN_ERROR_USER', (done) => {
+      it('should dispatch SIGNUP_USER and SIGNUP_ERROR_USER', (done) => {
         const expectedActions = [
           {
             type: types.SIGNUP_USER
@@ -157,6 +164,176 @@ describe('Users Async Actions', () => {
         ];
 
         store.dispatch(actions.signUp(data))
+          .then(() => {
+            expect(store.getActions()).toEqual(expectedActions);
+            done();
+          })
+          .catch(done);
+      });
+    });
+  });
+
+  describe('createUser', () => {
+    describe('on success', () => {
+      beforeEach(() => {
+        stub = createUserServiceStub().replace('createUser').with(() => Promise.resolve(response));
+        store = mockStore(initialState);
+      });
+
+      afterEach(() => {
+        stub.restore();
+      });
+
+      it('should dispatch CREATE_USER, CREATE_USER_SUCCESS', (done) => {
+        const expectedActions = [{
+            type: types.CREATE_USER
+          }, {
+            type: types.CREATE_USER_SUCCESS,
+            data: dataCreate
+          }
+        ];
+
+        store.dispatch(actions.createUser(dataCreate))
+          .then(() => {
+            expect(store.getActions()).toEqual(expectedActions);
+            done();
+          })
+          .catch(done);
+      });
+    });
+
+    describe('on failure', () => {
+      beforeEach(() => {
+        stub = createUserServiceStub().replace('createUser').with(() => Promise.reject({status: 401}));
+        store = mockStore(initialState);
+      });
+
+      afterEach(() => {
+        stub.restore();
+      });
+
+      it('should dispatch CREATE_USER and SIGNUP_ERROR_USER', (done) => {
+        const expectedActions = [
+          {
+            type: types.CREATE_USER
+          },
+          {
+            type: types.SIGNUP_ERROR_USER,
+            message: 'Oops! Something went wrong when creating user'
+          }
+        ];
+
+        store.dispatch(actions.createUser(data))
+          .then(() => {
+            expect(store.getActions()).toEqual(expectedActions);
+            done();
+          })
+          .catch(done);
+      });
+    });
+  });
+
+  describe('deleteUser', () => {
+    describe('on success', () => {
+      beforeEach(() => {
+        stub = createUserServiceStub().replace('deleteUser').with(() => Promise.resolve(response));
+        store = mockStore(initialState);
+      });
+
+      afterEach(() => {
+        stub.restore();
+      });
+
+      it('should dispatch DESTROY_USER', (done) => {
+        const expectedActions = [{
+            type: types.DESTROY_USER,
+            id: '123'
+          }
+        ];
+
+        store.dispatch(actions.deleteUser('123'))
+          .then(() => {
+            expect(store.getActions()).toEqual(expectedActions);
+            done();
+          })
+          .catch(done);
+      });
+    });
+
+    describe('on failure', () => {
+      beforeEach(() => {
+        stub = createUserServiceStub().replace('deleteUser').with(() => Promise.reject({status: 401}));
+        store = mockStore(initialState);
+      });
+
+      afterEach(() => {
+        stub.restore();
+      });
+
+      it('should dispatch DESTROY_USER_ERROR', (done) => {
+        const expectedActions = [
+          {
+            type: types.DESTROY_USER_ERROR,
+            message: 'Error while deleting user'
+          }
+        ];
+
+        store.dispatch(actions.deleteUser('123'))
+          .then(() => {
+            expect(store.getActions()).toEqual(expectedActions);
+            done();
+          })
+          .catch(done);
+      });
+    });
+  });
+
+  describe('updateUser', () => {
+    describe('on success', () => {
+      beforeEach(() => {
+        stub = createUserServiceStub().replace('updateUser').with(() => Promise.resolve(response));
+        store = mockStore(initialState);
+      });
+
+      afterEach(() => {
+        stub.restore();
+      });
+
+      it('should dispatch UPDATE_USER_SUCCESS', (done) => {
+        const expectedActions = [{
+            type: types.UPDATE_USER_SUCCESS,
+            id: '123'
+          }
+        ];
+
+        store.dispatch(actions.updateUser('123'))
+          .then(() => {
+            expect(store.getActions()).toEqual(expectedActions);
+            done();
+          })
+          .catch(done);
+      });
+    });
+
+    describe('on failure', () => {
+      beforeEach(() => {
+        stub = createUserServiceStub().replace('updateUser').with(() => Promise.reject({status: 401}));
+        store = mockStore(initialState);
+      });
+
+      afterEach(() => {
+        stub.restore();
+      });
+
+      it('should dispatch UPDATE_USER_ERROR', (done) => {
+        const expectedActions = [
+          {
+            type: types.UPDATE_USER_ERROR,
+            message: 'Oops! Something went wrong and we couldn\'t edit user'
+          }
+        ];
+
+        store.dispatch(actions.updateUser('123'))
           .then(() => {
             expect(store.getActions()).toEqual(expectedActions);
             done();
