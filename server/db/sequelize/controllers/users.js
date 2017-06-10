@@ -6,7 +6,7 @@ const UserRoles = {
   User: 'user',
   Manager: 'manager',
   Admin: 'admin'
-}
+};
 
 export function all(req, res) {
   if ((req.user !== undefined) && ((req.user.role === UserRoles.Admin) || (req.user.role === UserRoles.Manager))) {
@@ -22,7 +22,7 @@ export function all(req, res) {
 }
 
 export function login(req, res, next) {
-  passport.authenticate('local', (authErr, user, info) => {
+  passport.authenticate('local', (authErr, user) => {
     if (authErr) return next(authErr);
     if (!user) {
       return res.sendStatus(401);
@@ -81,7 +81,7 @@ export function add(req, res, next) {
       });
     }).catch(err =>
       next(err)
-    )
+    );
   } else {
     res.status(503).send('Not authorized.');
   }
@@ -108,7 +108,7 @@ export function update(req, res) {
     User.findOne({ where: query}).then((existingUser) => {
       if (existingUser) {
         existingUser.updateAttributes(data)
-        .success(function () {
+        .success(() => {
           res.status(200).send('Updated successfully');
         }).catch((err) => {
           console.log(err);

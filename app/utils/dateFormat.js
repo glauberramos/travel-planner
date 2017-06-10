@@ -5,11 +5,11 @@ export function formatDate(date) {
 }
 
 export function formatDateBeautifully(date) {
-  var monthNames = [
-    "Jan", "Feb", "Mar",
-    "Apr", "May", "Jun", "Jul",
-    "Aug", "Sep", "Oct",
-    "Nov", "Dec"
+  const monthNames = [
+    'Jan', 'Feb', 'Mar',
+    'Apr', 'May', 'Jun', 'Jul',
+    'Aug', 'Sep', 'Oct',
+    'Nov', 'Dec'
   ];
 
   const day = date.getDate() + 1;
@@ -20,18 +20,17 @@ export function formatDateBeautifully(date) {
 }
 
 export function daysUntil(date) {
-  const now = new Date(),
-      dateEnd = new Date(date.getFullYear(), date.getMonth(), date.getDate() + 1),
-      days = (dateEnd - now) / 1000/60/60/24;
+  const now = new Date();
+  const dateEnd = new Date(date.getFullYear(), date.getMonth(), date.getDate() + 1);
+  const days = (dateEnd - now) / 1000 / 60 / 60 / 24;
 
   return Math.round(days);
 }
 
 export function checkIfNextMonth(date) {
-
   const now = new Date();
   const month = date.getMonth() + 1;
   const currentMonth = now.getMonth() + 1;
 
-  return currentMonth + 1 === month ? true : false;
+  return currentMonth + 1 === month;
 }

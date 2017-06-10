@@ -31,16 +31,15 @@ function createTravelFailure(data) {
 }
 
 function guidGenerator() {
-    var S4 = function() {
+    const S4 = () => {
        return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
     };
 
-    return (S4() + S4() + "-" + S4() + "-" + S4() + "-" + S4() + "-" + S4() + S4() + S4());
+    return (S4() + S4() + '-' + S4() + '-' + S4() + '-' + S4() + '-' + S4() + S4() + S4());
 }
 
 export function createTravel(destination, comments, startDate, endDate) {
   return (dispatch, getState) => {
-    const { travel } = getState();
     const id = guidGenerator();
     const data = { destination, id, comments, startDate, endDate };
 

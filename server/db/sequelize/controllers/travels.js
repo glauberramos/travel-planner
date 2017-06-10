@@ -1,12 +1,11 @@
-import _ from 'lodash';
-import { Models, sequelize } from '../models';
+import { Models } from '../models';
 
 const Travel = Models.Travel;
 const UserRoles = {
   User: 'user',
   Manager: 'manager',
   Admin: 'admin'
-}
+};
 
 export function all(req, res) {
   if ((req.user !== undefined) && ((req.user.role === UserRoles.Admin) || (req.user.role === UserRoles.User))) {

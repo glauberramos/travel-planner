@@ -46,7 +46,7 @@ export default (sequelize, DataTypes) => {
 
         User.hasMany(models.Travel, {
           foreignKey: 'userId'
-        })
+        });
       }
     },
 

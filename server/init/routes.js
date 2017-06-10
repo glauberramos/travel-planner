@@ -1,9 +1,5 @@
-/**
- * Routes for express app
- */
-import passport from 'passport';
 import unsupportedMessage from '../db/unsupportedMessage';
-import { controllers, passport as passportConfig } from '../db';
+import { controllers } from '../db';
 
 const usersController = controllers && controllers.users;
 const travelsController = controllers && controllers.travels;

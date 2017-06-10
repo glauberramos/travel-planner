@@ -52,7 +52,7 @@ export default (app) => {
   console.log('===> 😊  Starting Server . . .');
   console.log(`===>  Environment: ${ENV}`);
   console.log(`===>  Listening on port: ${app.get('port')}`);
-  console.log(`===>  Using DB TYPE: postgres`);
+  console.log('===>  Using DB TYPE: postgres');
 
   if (ENV === 'production') {
     console.log('===> 🚦  Note: In order for authentication to work in production');

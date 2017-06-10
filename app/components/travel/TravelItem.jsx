@@ -7,7 +7,6 @@ import { UserRoles } from '../../utils/userRoles';
 
 const cx = classNames.bind(styles);
 
-
 export default class TravelItem extends Component {
   constructor(props) {
     super(props);
