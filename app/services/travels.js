@@ -10,7 +10,7 @@ export default () => {
     }),
     createTravel: ({ data }) => client.request({
       method: 'POST',
-      url: `/travel`,
+      url: '/travel',
       data
     }),
     deleteTravel: ({ id }) => client.request({

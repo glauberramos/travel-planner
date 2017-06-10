@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { UserRoles } from '../../utils/userRoles';
 import classNames from 'classnames/bind';
-import { formatDate, formatDateBeautifully, daysUntil } from '../../utils/dateFormat';
+import React, { Component } from 'react';
 import styles from './user.css';
+import { UserRoles } from '../../utils/userRoles';
+
 const cx = classNames.bind(styles);
 
 export default class UserItem extends Component {
@@ -14,19 +14,7 @@ export default class UserItem extends Component {
       role: this.props.role,
       password: '',
       editing: false
-    }
-  }
-
-  updateEmail(event) {
-    this.setState({ email: event.target.value });
-  }
-
-  updateRole(event) {
-    this.setState({ role: event.target.value });
-  }
-
-  updatePassword(event) {
-    this.setState({ password: event.target.value });
+    };
   }
 
   onDelete() {
@@ -42,6 +30,18 @@ export default class UserItem extends Component {
       this.state.password);
   }
 
+  updateEmail(event) {
+    this.setState({ email: event.target.value });
+  }
+
+  updateRole(event) {
+    this.setState({ role: event.target.value });
+  }
+
+  updatePassword(event) {
+    this.setState({ password: event.target.value });
+  }
+
   toggleEdit() {
     this.setState({
       editing: !this.state.editing
@@ -51,45 +51,45 @@ export default class UserItem extends Component {
   render() {
     const roleOptions = Object.keys(UserRoles).map((role) => {
       return (
-        <option key={role} value={ UserRoles[role] }>{ role }</option>
-      )
+        <option key={role} value={UserRoles[role]}>{role}</option>
+      );
     });
 
     return (
       <div className={cx('item', { editing: this.state.editing })}>
         <div className={cx('info')}>
-          <span>{ this.state.email }</span>
-          <span className={cx('role')}>{ this.state.role }</span>
+          <span>{this.state.email}</span>
+          <span className={cx('role')}>{this.state.role}</span>
           <br />
-          <button className={cx('button', 'primary')} onClick={ this.toggleEdit.bind(this) }>
+          <button className={cx('button', 'primary')} onClick={this.toggleEdit}>
             Edit
           </button>
         </div>
         <div className={cx('edit')}>
-          <form onSubmit={ this.onUpdate.bind(this) }>
+          <form onSubmit={this.onUpdate}>
             <input
               className={cx('input', 'margin-right')}
               placeholder="email"
               required
-              onChange={this.updateEmail.bind(this)}
+              onChange={this.updateEmail}
               value={this.state.email} />
             <select
               className={cx('input', 'margin-right')}
               value={this.state.role}
-              onChange={this.updateRole.bind(this)}>
-              { roleOptions }
+              onChange={this.updateRole}>
+              {roleOptions}
             </select>
             <input
               className={cx('input', 'margin-right')}
               type="password"
               placeholder="Password"
-              onChange={this.updatePassword.bind(this)}
+              onChange={this.updatePassword}
               value={this.state.password} />
             <input type="submit" value="Save" className={cx('button', 'save')} />
-            <a className={cx('button', 'delete')} onClick={ this.onDelete.bind(this) }>
+            <a className={cx('button', 'delete')} role="button" onClick={this.onDelete}>
               Delete
             </a>
-            <a className={cx('button', 'primary')} onClick={ this.toggleEdit.bind(this) }>
+            <a className={cx('button', 'primary')} role="button" onClick={this.toggleEdit}>
               Cancel
             </a>
           </form>

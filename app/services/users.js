@@ -19,7 +19,7 @@ export default () => {
     }),
     createUser: ({ email, password, role }) => client.request({
       method: 'POST',
-      url: `/user`,
+      url: '/user',
       data: {
         email,
         password,

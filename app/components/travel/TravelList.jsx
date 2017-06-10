@@ -7,7 +7,7 @@ import { checkIfNextMonth } from '../../utils/dateFormat';
 
 const cx = classNames.bind(styles);
 
-export default class TravelList extends Component {
+class TravelList extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -86,3 +86,5 @@ TravelList.propTypes = {
   updateTravel: PropTypes.func.isRequired,
   userRole: PropTypes.string.isRequired
 };
+
+export default TravelList;

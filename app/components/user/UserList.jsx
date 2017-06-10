@@ -2,34 +2,32 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import UserItem from './UserItem';
 
-export default class UserList extends Component {
-  constructor(props) {
-    super(props);
-  }
-
+class UserList extends Component {
   render() {
-    const userListItems = this.props.users.map && this.props.users.map((user, key) => {
+    const userListItems = this.props.users.map && this.props.users.map((user) => {
         return (
           <UserItem
-            key={ user.id }
-            id={ user.id }
-            email={ user.email }
-            role={ user.role }
-            deleteUser={ this.props.deleteUser }
-            updateUser={ this.props.updateUser } />
+            key={user.id}
+            id={user.id}
+            email={user.email}
+            role={user.role}
+            deleteUser={this.props.deleteUser}
+            updateUser={this.props.updateUser} />
         );
       });
 
     return (
       <div>
-        { userListItems }
+        {userListItems}
       </div>
-    )
+    );
   }
-};
+}
 
 UserList.propTypes = {
   users: PropTypes.array.isRequired,
   deleteUser: PropTypes.func.isRequired,
   updateUser: PropTypes.func.isRequired
 };
+
+export default UserList;

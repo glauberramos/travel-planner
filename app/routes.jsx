@@ -7,17 +7,6 @@ import TravelPage from './components/travel/TravelPage';
 import LoginOrRegisterPage from './components/auth/LoginOrRegisterPage';
 
 export default (store) => {
-  const requireAuth = (nextState, replace, callback) => {
-    const { user: { authenticated }} = store.getState();
-    if (!authenticated) {
-      replace({
-        pathname: '/login',
-        state: { nextPathname: nextState.location.pathname }
-      });
-    }
-    callback();
-  };
-
   const redirectAuth = (nextState, replace, callback) => {
     const { user: { authenticated }} = store.getState();
     if (authenticated) {
@@ -43,7 +32,7 @@ export default (store) => {
     <Route path="/" component={AppPage}>
       <IndexRoute component={TravelPage} fetchData={fetchTravelData} onEnter={redirectLogin} />
       <Route path="trips" component={TravelPage} fetchData={fetchTravelData} onEnter={redirectLogin} />
-      <Route path="users" component={UserPage} fetchData={fetchUserData} onEnter={redirectLogin}  />
+      <Route path="users" component={UserPage} fetchData={fetchUserData} onEnter={redirectLogin} />
       <Route path="login" component={LoginOrRegisterPage} onEnter={redirectAuth} />
     </Route>
   );
