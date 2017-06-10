@@ -54,7 +54,8 @@ describe('Travels Async Actions', () => {
             ...data,
             id: 'abc'
           }, {
-            type: types.CREATE_TRAVEL_SUCCESS
+            type: types.CREATE_TRAVEL_SUCCESS,
+            message: "Created trip successfully!"
           }
         ];
 
@@ -85,7 +86,7 @@ describe('Travels Async Actions', () => {
             id: 'abc'
           }, {
             type: types.CREATE_TRAVEL_FAILURE,
-            message: 'Oops! Something went wrong and we couldn\'t create your travel'
+            message: 'Oops! Something went wrong and we couldn\'t create your trip'
           }
         ];
 
@@ -144,6 +145,60 @@ describe('Travels Async Actions', () => {
         ];
 
         store.dispatch(actions.deleteTravel('abc'))
+          .then(() => {
+            expect(store.getActions()).toEqual(expectedActions);
+            done();
+          })
+          .catch(done);
+      });
+    });
+  });
+
+  describe('updateTravel', () => {
+    describe('on success', () => {
+      beforeEach(() => {
+        stub = createTravelServiceStub().replace('updateTravel').with(() => Promise.resolve(response));
+        store = mockStore(initialState);
+      });
+
+      afterEach(() => {
+        stub.restore();
+      });
+
+      it('should dispatch UPDATE_TRAVEL_SUCCESS', (done) => {
+        const expectedActions = [{
+          type: types.UPDATE_TRAVEL_SUCCESS,
+          message: "Updated trip successfully!"
+        }];
+
+        store.dispatch(actions.updateTravel('abc', data.destination, data.comments, data.startDate, data.endDate))
+          .then(() => {
+            expect(store.getActions()).toEqual(expectedActions);
+            done();
+          })
+          .catch(done);
+      });
+    });
+
+    describe('on failure', () => {
+      beforeEach(() => {
+        stub = createTravelServiceStub().replace('updateTravel').with(() => Promise.reject({status: 401}));
+        store = mockStore(initialState);
+      });
+
+      afterEach(() => {
+        stub.restore();
+      });
+
+      it('should dispatch UPDATE_TRAVEL_FAILURE', (done) => {
+        const expectedActions = [
+          {
+            type: types.UPDATE_TRAVEL_FAILURE,
+            message: "Oops! Something went wrong and we couldn't edit your trip"
+          }
+        ];
+
+        store.dispatch(actions.updateTravel('abc', data.destination, data.comments, data.startDate, data.endDate))
           .then(() => {
             expect(store.getActions()).toEqual(expectedActions);
             done();

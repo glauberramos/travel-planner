@@ -18,9 +18,24 @@ function createTravelRequest(data) {
   };
 }
 
-function createTravelSuccess() {
+function createTravelSuccess(message) {
   return {
-    type: types.CREATE_TRAVEL_SUCCESS
+    type: types.CREATE_TRAVEL_SUCCESS,
+    message
+  };
+}
+
+function updateTravelSuccess(message) {
+  return {
+    type: types.UPDATE_TRAVEL_SUCCESS,
+    message
+  };
+}
+
+function updateTravelFailure(message) {
+  return {
+    type: types.UPDATE_TRAVEL_FAILURE,
+    message
   };
 }
 
@@ -48,11 +63,11 @@ export function createTravel(destination, comments, startDate, endDate) {
     return travelService().createTravel({ data })
       .then((res) => {
         if (res.status === 200) {
-          return dispatch(createTravelSuccess());
+          return dispatch(createTravelSuccess('Created trip successfully!'));
         }
       })
       .catch(() => {
-        return dispatch(createTravelFailure('Oops! Something went wrong and we couldn\'t create your travel'));
+        return dispatch(createTravelFailure('Oops! Something went wrong and we couldn\'t create your trip'));
       });
   };
 }
@@ -77,7 +92,9 @@ export function updateTravel(id, destination, comments, startDate, endDate) {
         startDate,
         endDate
       }
+    }).then((res) => {
+      return dispatch(updateTravelSuccess('Updated trip successfully!'));
     })
-      .catch(() => dispatch(createTravelFailure({id, error: 'Oops! Something went wrong and we couldn\'t edit your travel'})));
+    .catch(() => dispatch(updateTravelFailure('Oops! Something went wrong and we couldn\'t edit your trip')));
   };
 }
