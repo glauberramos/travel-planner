@@ -57,6 +57,8 @@ export default class TravelList extends Component {
           <TravelItem
             id={ travel.id }
             key={ travel.id }
+            userId={ travel.userId }
+            userRole= { this.props.userRole }
             destination={ travel.destination }
             startDate={ travel.startDate }
             endDate={ travel.endDate }
@@ -81,5 +83,6 @@ export default class TravelList extends Component {
 TravelList.propTypes = {
   travels: PropTypes.array.isRequired,
   deleteTravel: PropTypes.func.isRequired,
-  updateTravel: PropTypes.func.isRequired
+  updateTravel: PropTypes.func.isRequired,
+  userRole: PropTypes.string.isRequired
 };

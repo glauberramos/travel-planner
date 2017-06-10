@@ -3,7 +3,10 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import { formatDate, formatDateBeautifully, daysUntil } from '../../utils/dateFormat';
 import styles from './travel.css';
+import { UserRoles } from '../../utils/userRoles';
+
 const cx = classNames.bind(styles);
+
 
 export default class TravelItem extends Component {
   constructor(props) {
@@ -63,6 +66,9 @@ export default class TravelItem extends Component {
           <span className={cx('destination')}>{ this.state.destination }</span>
           <span className={cx('date')}>{ formatDateBeautifully(new Date(this.state.startDate)) } - { formatDateBeautifully(new Date(this.state.endDate)) }</span>
           <span className={cx('comments')}>{ this.state.comments }</span>
+           { (this.props.userRole ===  UserRoles.Admin) ? (
+             <span>UserId: { this.props.userId }</span>
+           ) : '' }
           <br />
           <button className={cx('button', 'primary')} onClick={ this.toggleEdit.bind(this) }>
             Edit
@@ -113,5 +119,7 @@ TravelItem.propTypes = {
   startDate: PropTypes.string.isRequired,
   endDate: PropTypes.string.isRequired,
   comments: PropTypes.string.isRequired,
-  deleteTravel: PropTypes.func.isRequired
+  deleteTravel: PropTypes.func.isRequired,
+  userId: PropTypes.number.isRequired,
+  userRole: PropTypes.string.isRequired
 };

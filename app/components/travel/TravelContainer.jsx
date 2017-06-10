@@ -20,7 +20,8 @@ class Travel extends Component {
               <TravelCreation createTravel={ createTravel } />
               <TravelList travels={ travels }
                 deleteTravel={ deleteTravel }
-                updateTravel={ updateTravel } />
+                updateTravel={ updateTravel }
+                userRole= { userRole } />
             </div>
           ) : (
             <Link to="/users">

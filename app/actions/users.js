@@ -52,10 +52,11 @@ function beginSignUp() {
   return { type: types.SIGNUP_USER };
 }
 
-function signUpSuccess(message) {
+function signUpSuccess(message, role) {
   return {
     type: types.SIGNUP_SUCCESS_USER,
-    message
+    message,
+    role
   };
 }
 
@@ -103,7 +104,7 @@ export function signUp(data) {
 
     return authService().signUp(data)
       .then((response) => {
-          dispatch(signUpSuccess('You have successfully registered an account!', data.role));
+          dispatch(signUpSuccess('You have successfully registered an account!', response.data.userRole));
           dispatch(push('/'));
       })
       .catch((err) => {

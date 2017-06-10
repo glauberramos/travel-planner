@@ -55,7 +55,7 @@ export function signUp(req, res, next) {
     return user.save().then(() => {
       req.logIn(user, (err) => {
         if (err) return res.sendStatus(401);
-        return res.sendStatus(200);
+        return res.status(200).send({userRole: user.role });
       });
     });
   }).catch(err =>

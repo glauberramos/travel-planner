@@ -23,7 +23,7 @@ class User extends Component {
             </div>
           ) : (
             <Link to="/trips">
-              <button>Manage Trips</button>
+              <button className={cx('button', 'primary')}>Manage Trips</button>
             </Link> )
           }
       </div>
