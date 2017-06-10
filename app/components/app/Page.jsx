@@ -1,3 +1,4 @@
+/* eslint react/forbid-prop-types: 0*/
 import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
@@ -11,6 +12,12 @@ const Page = ({ title, link, meta, children }) => {
   );
 };
 
+Page.defaultProps = {
+  title: '',
+  link: [],
+  meta: []
+};
+
 Page.propTypes = {
   title: PropTypes.string,
   link: PropTypes.array,
@@ -18,4 +25,3 @@ Page.propTypes = {
 };
 
 export default Page;
-

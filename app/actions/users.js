@@ -1,7 +1,5 @@
 import { push } from 'react-router-redux';
-import { authService } from '../services';
-import { userService } from '../services';
-
+import { authService, userService } from '../services';
 import * as types from '../utils/types';
 
 function destroy(id) {
@@ -92,7 +90,7 @@ export function manualLogin(data) {
           dispatch(loginSuccess('You have been successfully logged in', response.data.userRole));
           dispatch(push('/'));
       })
-      .catch((err) => {
+      .catch(() => {
         dispatch(loginError('Oops! Invalid username or password'));
       });
   };
@@ -107,7 +105,7 @@ export function signUp(data) {
           dispatch(signUpSuccess('You have successfully registered an account!', response.data.userRole));
           dispatch(push('/'));
       })
-      .catch((err) => {
+      .catch(() => {
         dispatch(signUpError('Oops! Something went wrong when signing up'));
       });
   };
@@ -118,10 +116,10 @@ export function createUser(data) {
     dispatch(beginSignUp());
 
     return userService().createUser(data)
-      .then((response) => {
+      .then(() => {
           dispatch(crateUserSuccess(data));
       })
-      .catch((err) => {
+      .catch(() => {
         dispatch(signUpError('Oops! Something went wrong when creating user'));
       });
   };
@@ -132,11 +130,11 @@ export function logOut() {
     dispatch(beginLogout());
 
     return authService().logOut()
-      .then((response) => {
+      .then(() => {
           dispatch(logoutSuccess());
           dispatch(push('/login'));
       })
-      .catch((err) => {
+      .catch(() => {
         dispatch(logoutError());
       });
   };
@@ -153,16 +151,16 @@ export function updateUser(id, email, role, password) {
   let data;
 
   if (password === '' || password === undefined) {
-    data = { email: email, role: role };
+    data = { email, role };
   } else {
-    data = { email: email, role: role, password: password }
+    data = { email, role, password };
   }
 
   return (dispatch) => {
     return userService().updateUser({
       id,
-      data: data
-      }).then((response) => {
+      data
+      }).then(() => {
           dispatch(updateSuccess(id));
       })
       .catch(() => dispatch(updateError({error: 'Oops! Something went wrong and we couldn\'t edit user'})));

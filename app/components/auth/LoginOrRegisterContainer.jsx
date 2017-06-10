@@ -1,3 +1,4 @@
+/* eslint react/forbid-prop-types: 0, no-shadow: 0, jsx-a11y/no-static-element-interactions: 0, react/no-find-dom-node: 0, react/no-string-refs: 0*/
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
@@ -83,7 +84,7 @@ class LoginOrRegister extends Component {
               <input
                 className={cx('input')}
                 type="password"
-               ref="password"
+                ref="password"
                 placeholder="password"
               />
               <p
@@ -103,7 +104,7 @@ class LoginOrRegister extends Component {
 }
 
 LoginOrRegister.propTypes = {
-  user: PropTypes.object,
+  user: PropTypes.object.isRequired,
   manualLogin: PropTypes.func.isRequired,
   signUp: PropTypes.func.isRequired,
   toggleLoginMode: PropTypes.func.isRequired

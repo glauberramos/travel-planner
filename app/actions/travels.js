@@ -1,4 +1,4 @@
-/* eslint consistent-return: 0, no-else-return: 0*/
+/* eslint consistent-return: 0, no-else-return: 0, no-bitwise: 0*/
 import * as types from '../utils/types';
 import { travelService } from '../services';
 
@@ -39,7 +39,7 @@ function guidGenerator() {
 }
 
 export function createTravel(destination, comments, startDate, endDate) {
-  return (dispatch, getState) => {
+  return (dispatch) => {
     const id = guidGenerator();
     const data = { destination, id, comments, startDate, endDate };
 
@@ -69,10 +69,10 @@ export function updateTravel(id, destination, comments, startDate, endDate) {
     return travelService().updateTravel({
       id,
       data: {
-        destination: destination,
-        comments: comments,
-        startDate: startDate,
-        endDate: endDate
+        destination,
+        comments,
+        startDate,
+        endDate
       }
     })
       .catch(() => dispatch(createTravelFailure({id, error: 'Oops! Something went wrong and we couldn\'t edit your travel'})));

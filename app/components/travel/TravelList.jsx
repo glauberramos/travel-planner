@@ -1,3 +1,4 @@
+/* eslint react/prefer-stateless-function: 0, react/forbid-prop-types: 0, react/jsx-no-bind: 0*/
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
@@ -73,8 +74,8 @@ class TravelList extends Component {
     return (
       <div>
         <h1 className={cx('header', 'print')}>Your trip plan for next month</h1>
-        <input className={cx('filter')} value={this.state.filterTrip} placeholder="Filter your trips by destination or comments" onChange={this.updateFilter} />
-        <input className={cx('button', 'primary', 'print-button')} type="button" value="Print next month plan" onClick={this.onPrint} />
+        <input className={cx('filter')} value={this.state.filterTrip} placeholder="Filter your trips by destination or comments" onChange={this.updateFilter.bind(this)} />
+        <input className={cx('button', 'primary', 'print-button')} type="button" value="Print next month plan" onClick={this.onPrint.bind(this)} />
         <br />
         {travelListItems}
       </div>

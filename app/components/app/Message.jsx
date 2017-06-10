@@ -1,3 +1,4 @@
+/* eslint react/forbid-prop-types: 0, no-shadow: 0, jsx-a11y/no-static-element-interactions: 0*/
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -16,6 +17,11 @@ const Message = ({message, type, dismissMessage}) => (
     })}
     onClick={dismissMessage}>{message}</div>
 );
+
+Message.defaultProps = {
+  message: '',
+  type: ''
+};
 
 Message.propTypes = {
   message: PropTypes.string,

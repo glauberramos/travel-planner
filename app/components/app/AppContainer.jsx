@@ -1,3 +1,4 @@
+/* eslint react/forbid-prop-types: 0*/
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
@@ -18,7 +19,7 @@ const AppContainer = ({ children }) => {
 };
 
 AppContainer.propTypes = {
-  children: PropTypes.object
+  children: PropTypes.object.isRequired
 };
 
 export default AppContainer;

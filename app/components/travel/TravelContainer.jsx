@@ -1,33 +1,36 @@
+/* eslint react/prefer-stateless-function: 0, react/forbid-prop-types: 0*/
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
+import classNames from 'classnames/bind';
 import TravelCreation from './TravelCreation';
 import TravelList from './TravelList';
 import { createTravel, deleteTravel, updateTravel } from '../../actions/travels';
 import { UserRoles } from '../../utils/userRoles';
-import classNames from 'classnames/bind';
 import styles from './travel.css';
+
 const cx = classNames.bind(styles);
 
 class Travel extends Component {
   render() {
-    const { travels, createTravel, deleteTravel, updateTravel, userRole } = this.props;
     return (
       <div>
-        { ((userRole === UserRoles.User) || (userRole === UserRoles.Admin)) ?
-          ( <div className={cx('container')}>
-              <TravelCreation createTravel={ createTravel } />
-              <TravelList travels={ travels }
-                deleteTravel={ deleteTravel }
-                updateTravel={ updateTravel }
-                userRole= { userRole } />
-            </div>
-          ) : (
-            <Link to="/users">
-              <button className={cx('button', 'primary')}>Manage Users</button>
-            </Link> )
-          }
+        {((this.props.userRole === UserRoles.User) || (this.props.userRole === UserRoles.Admin)) ?
+        (<div className={cx('container')}>
+          <TravelCreation
+            createTravel={this.props.createTravel} />
+          <TravelList
+            travels={this.props.travels}
+            deleteTravel={this.props.deleteTravel}
+            updateTravel={this.props.updateTravel}
+            userRole={this.props.userRole} />
+        </div>
+        ) : (
+          <Link to="/users">
+            <button className={cx('button', 'primary')}>Manage Users</button>
+          </Link>)
+        }
       </div>
     );
   }
