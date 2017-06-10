@@ -189,7 +189,8 @@ describe('Users Async Actions', () => {
             type: types.CREATE_USER
           }, {
             type: types.CREATE_USER_SUCCESS,
-            data: dataCreate
+            data: dataCreate,
+            message: 'User successfully created!'
           }
         ];
 
@@ -212,13 +213,13 @@ describe('Users Async Actions', () => {
         stub.restore();
       });
 
-      it('should dispatch CREATE_USER and SIGNUP_ERROR_USER', (done) => {
+      it('should dispatch CREATE_USER and CREATE_USER_ERROR', (done) => {
         const expectedActions = [
           {
             type: types.CREATE_USER
           },
           {
-            type: types.SIGNUP_ERROR_USER,
+            type: types.CREATE_USER_ERROR,
             message: 'Oops! Something went wrong when creating user'
           }
         ];
@@ -302,7 +303,8 @@ describe('Users Async Actions', () => {
       it('should dispatch UPDATE_USER_SUCCESS', (done) => {
         const expectedActions = [{
             type: types.UPDATE_USER_SUCCESS,
-            id: '123'
+            id: '123',
+            message: 'User successfully updated!'
           }
         ];
 

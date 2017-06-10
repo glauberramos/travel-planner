@@ -18,9 +18,10 @@ function loginSuccess(message, role) {
   };
 }
 
-function updateSuccess(id) {
+function updateSuccess(id, message) {
   return {
     type: types.UPDATE_USER_SUCCESS,
+    message,
     id
   };
 }
@@ -53,6 +54,13 @@ function signUpError(message) {
   };
 }
 
+function createUserError(message) {
+  return {
+    type: types.CREATE_USER_ERROR,
+    message
+  };
+}
+
 function beginSignUp() {
   return { type: types.SIGNUP_USER };
 }
@@ -69,10 +77,11 @@ function signUpSuccess(message, role) {
   };
 }
 
-function createUserSuccess(data) {
+function createUserSuccess(data, message) {
   return {
     type: types.CREATE_USER_SUCCESS,
-    data
+    data,
+    message
   };
 }
 
@@ -128,11 +137,11 @@ export function createUser(data) {
 
     return userService().createUser(data)
       .then(() => {
-          dispatch(createUserSuccess(data));
+          dispatch(createUserSuccess(data, 'User successfully created!'));
       })
       .catch((err) => {
         console.log(err);
-        dispatch(signUpError('Oops! Something went wrong when creating user'));
+        dispatch(createUserError('Oops! Something went wrong when creating user'));
       });
   };
 }
@@ -174,7 +183,7 @@ export function updateUser(id, email, role, password) {
   return (dispatch) => {
     return userService().updateUser({ id, data })
     .then(() => {
-      dispatch(updateSuccess(id));
+      dispatch(updateSuccess(id, 'User successfully updated!'));
     })
     .catch(() => {
       dispatch(updateError('Oops! Something went wrong and we couldn\'t edit user'));
