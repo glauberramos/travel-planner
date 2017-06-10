@@ -21,14 +21,6 @@ export default (app) => {
     console.warn(unsupportedMessage('users routes'));
   }
 
-  function loggedIn(req, res, next) {
-    if (req.user) {
-        next();
-    } else {
-        res.redirect('/login');
-    }
-  }
-
   if (travelsController) {
     app.get('/travel', travelsController.all);
     app.post('/travel', travelsController.add);

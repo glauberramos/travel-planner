@@ -122,7 +122,7 @@ export function createUser(data) {
           dispatch(crateUserSuccess(data));
       })
       .catch((err) => {
-        dispatch(signUpError('Oops! Something went wrong when signing up'));
+        dispatch(signUpError('Oops! Something went wrong when creating user'));
       });
   };
 }

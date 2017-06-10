@@ -11,7 +11,8 @@ const Message = ({message, type, dismissMessage}) => (
   <div
     className={cx('message', {
       show: message && message.length > 0,
-      success: type === 'SUCCESS'
+      success: type === 'SUCCESS',
+      error: type === 'ERROR'
     })}
     onClick={dismissMessage}>{message}</div>
 );

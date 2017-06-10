@@ -25,7 +25,7 @@ export default class UserCreation extends Component {
     this.setState({ password: event.target.value });
   }
 
-  onSave() {
+  onSave(event) {
     event.preventDefault();
     this.props.createUser({ email: this.state.email, role: this.state.role, password: this.state.password });
     this.setState({ email: '', role: 'user', password: '' });
