@@ -74,8 +74,10 @@ class TravelList extends Component {
     return (
       <div>
         <h1 className={cx('header', 'print')}>Your trip plan for next month</h1>
-        <input className={cx('filter')} value={this.state.filterTrip} placeholder="Filter your trips by destination or comments" onChange={this.updateFilter.bind(this)} />
-        <input className={cx('button', 'primary', 'print-button')} type="button" value="Print next month plan" onClick={this.onPrint.bind(this)} />
+        <div className={cx('actions')}>
+          <input className={cx('button', 'primary', 'print-button')} type="button" value="Print next month plan" onClick={this.onPrint.bind(this)} />
+          <input className={cx('filter')} value={this.state.filterTrip} placeholder="Filter your trips by destination or comments" onChange={this.updateFilter.bind(this)} />
+        </div>
         <br />
         {travelListItems}
       </div>

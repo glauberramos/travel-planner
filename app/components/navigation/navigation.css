@@ -20,8 +20,20 @@
   border-bottom: 5px solid #9c27b0;
 }
 
+@media (max-width: 425px) {
+  .item {
+    margin: 0;
+  }
+}
+
 .logo {
   font-size: 1.7em;
+}
+
+@media (max-width: 425px) {
+  .logo {
+    display: block;
+  }
 }
 
 .active {
