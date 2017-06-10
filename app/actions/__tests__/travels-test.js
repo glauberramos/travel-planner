@@ -85,11 +85,65 @@ describe('Travels Async Actions', () => {
             id: 'abc'
           }, {
             type: types.CREATE_TRAVEL_FAILURE,
-            error: 'Oops! Something went wrong and we couldn\'t create your travel'
+            message: 'Oops! Something went wrong and we couldn\'t create your travel'
           }
         ];
 
         store.dispatch(actions.createTravel(data.destination, data.comments, data.startDate, data.endDate))
+          .then(() => {
+            expect(store.getActions()).toEqual(expectedActions);
+            done();
+          })
+          .catch(done);
+      });
+    });
+  });
+
+  describe('deleteTravel', () => {
+    describe('on success', () => {
+      beforeEach(() => {
+        stub = createTravelServiceStub().replace('deleteTravel').with(() => Promise.resolve(response));
+        store = mockStore(initialState);
+      });
+
+      afterEach(() => {
+        stub.restore();
+      });
+
+      it('should dispatch DESTROY_TRAVEL, DESTROY_TRAVEL_SUCCESS', (done) => {
+        const expectedActions = [{
+          type: types.DESTROY_TRAVEL,
+          id: 'abc'
+        }];
+
+        store.dispatch(actions.deleteTravel('abc'))
+          .then(() => {
+            expect(store.getActions()).toEqual(expectedActions);
+            done();
+          })
+          .catch(done);
+      });
+    });
+
+    describe('on failure', () => {
+      beforeEach(() => {
+        stub = createTravelServiceStub().replace('deleteTravel').with(() => Promise.reject({status: 401}));
+        store = mockStore(initialState);
+      });
+
+      afterEach(() => {
+        stub.restore();
+      });
+
+      it('should dispatch DESTROY_TRAVEL_ERROR', (done) => {
+        const expectedActions = [
+          {
+            type: types.DESTROY_TRAVEL_ERROR,
+            message: 'Oops! Something went wrong, we couldn\'t delete your trip'
+          }
+        ];
+
+        store.dispatch(actions.deleteTravel('abc'))
           .then(() => {
             expect(store.getActions()).toEqual(expectedActions);
             done();

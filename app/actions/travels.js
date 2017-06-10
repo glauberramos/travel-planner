@@ -24,10 +24,17 @@ function createTravelSuccess() {
   };
 }
 
-function createTravelFailure(data) {
+function createTravelFailure(message) {
   return {
     type: types.CREATE_TRAVEL_FAILURE,
-    error: data.error
+    message
+  };
+}
+
+function destroyError(message) {
+  return {
+    type: types.DESTROY_TRAVEL_ERROR,
+    message
   };
 }
 
@@ -45,7 +52,7 @@ export function createTravel(destination, comments, startDate, endDate) {
         }
       })
       .catch(() => {
-        return dispatch(createTravelFailure({ error: 'Oops! Something went wrong and we couldn\'t create your travel'}));
+        return dispatch(createTravelFailure('Oops! Something went wrong and we couldn\'t create your travel'));
       });
   };
 }
@@ -53,7 +60,10 @@ export function createTravel(destination, comments, startDate, endDate) {
 export function deleteTravel(id) {
   return (dispatch) => {
     return travelService().deleteTravel({ id })
-      .then(() => dispatch(destroy(id)));
+      .then(() => dispatch(destroy(id)))
+      .catch(() => {
+        return dispatch(destroyError('Oops! Something went wrong, we couldn\'t delete your trip'));
+      });
   };
 }
 

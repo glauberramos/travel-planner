@@ -13,6 +13,7 @@ export default function message(state = {
     case types.SIGNUP_ERROR_USER:
     case types.DESTROY_USER_ERROR:
     case types.UPDATE_USER_ERROR:
+    case types.DESTROY_TRAVEL_ERROR:
       return {...state, message: action.message, type: 'ERROR'};
     default:
       return state;
