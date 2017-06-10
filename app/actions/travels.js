@@ -92,7 +92,7 @@ export function updateTravel(id, destination, comments, startDate, endDate) {
         startDate,
         endDate
       }
-    }).then((res) => {
+    }).then(() => {
       return dispatch(updateTravelSuccess('Updated trip successfully!'));
     })
     .catch(() => dispatch(updateTravelFailure('Oops! Something went wrong and we couldn\'t edit your trip')));

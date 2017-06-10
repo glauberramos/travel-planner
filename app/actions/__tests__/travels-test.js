@@ -55,7 +55,7 @@ describe('Travels Async Actions', () => {
             id: 'abc'
           }, {
             type: types.CREATE_TRAVEL_SUCCESS,
-            message: "Created trip successfully!"
+            message: 'Created trip successfully!'
           }
         ];
 
@@ -168,7 +168,7 @@ describe('Travels Async Actions', () => {
       it('should dispatch UPDATE_TRAVEL_SUCCESS', (done) => {
         const expectedActions = [{
           type: types.UPDATE_TRAVEL_SUCCESS,
-          message: "Updated trip successfully!"
+          message: 'Updated trip successfully!'
         }];
 
         store.dispatch(actions.updateTravel('abc', data.destination, data.comments, data.startDate, data.endDate))
