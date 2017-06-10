@@ -12,17 +12,26 @@ export function formatDateBeautifully(date) {
     "Nov", "Dec"
   ];
 
-  var day = date.getDate() + 1;
-  var month = date.getMonth() + 1;
-  var year = date.getFullYear();
+  const day = date.getDate() + 1;
+  const month = date.getMonth();
+  const year = date.getFullYear();
 
   return day + ' ' + monthNames[month] + ' ' + year;
 }
 
 export function daysUntil(date) {
-  var now = new Date(),
+  const now = new Date(),
       dateEnd = new Date(date.getFullYear(), date.getMonth(), date.getDate() + 1),
       days = (dateEnd - now) / 1000/60/60/24;
 
   return Math.round(days);
+}
+
+export function checkIfNextMonth(date) {
+
+  const now = new Date();
+  const month = date.getMonth() + 1;
+  const currentMonth = now.getMonth() + 1;
+
+  return currentMonth + 1 === month ? true : false;
 }

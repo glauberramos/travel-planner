@@ -3,18 +3,37 @@ import PropTypes from 'prop-types';
 import TravelItem from './TravelItem';
 import classNames from 'classnames/bind';
 import styles from './travel';
+import { checkIfNextMonth } from '../../utils/dateFormat';
+
 const cx = classNames.bind(styles);
 
 export default class TravelList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      filterTrip: ''
+      filterTrip: '',
+      isPrinting: false
     };
   }
 
   updateFilter(event) {
     this.setState({ filterTrip: event.target.value });
+  }
+
+  onPrint() {
+    this.setState({
+      isPrinting: true
+    }, () => {
+      window.print();
+    });
+
+    const that = this;
+
+    setTimeout(function () {
+      that.setState({
+        isPrinting: false
+      });
+    }, 100);
   }
 
   render() {
@@ -24,8 +43,12 @@ export default class TravelList extends Component {
 
     const filteredList = this.props.travels.filter(travel => {
       if (travel.destination !== undefined && travel.comments !== undefined) {
-        return travel.destination.toLowerCase().includes(this.state.filterTrip.toLowerCase()) ||
-          travel.comments.toLowerCase().includes(this.state.filterTrip.toLowerCase());
+        if (this.state.isPrinting === true) {
+          return checkIfNextMonth(new Date(travel.startDate));
+        } else {
+          return travel.destination.toLowerCase().includes(this.state.filterTrip.toLowerCase()) ||
+            travel.comments.toLowerCase().includes(this.state.filterTrip.toLowerCase());
+        }
       }
     });
 
@@ -45,7 +68,9 @@ export default class TravelList extends Component {
 
     return (
       <div>
+        <h1 className={cx('header', 'print')}>Your trip plan for next month</h1>
         <input className={cx('filter')} value={ this.state.filterTrip } placeholder="Filter your trips by destination or comments" onChange={ this.updateFilter.bind(this) } />
+        <input className={cx('button', 'primary', 'print-button')}  type="button" value="Print next month plan" onClick={ this.onPrint.bind(this) } />
         <br/>
         { travelListItems }
       </div>
