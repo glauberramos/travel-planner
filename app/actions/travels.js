@@ -1,6 +1,7 @@
-/* eslint consistent-return: 0, no-else-return: 0, no-bitwise: 0*/
+/* eslint consistent-return: 0, no-else-return: 0*/
 import * as types from '../utils/types';
 import { travelService } from '../services';
+import { guidGenerator } from '../utils/dateFormat';
 
 function destroy(id) {
   return { type: types.DESTROY_TRAVEL, id };
@@ -28,14 +29,6 @@ function createTravelFailure(data) {
     type: types.CREATE_TRAVEL_FAILURE,
     error: data.error
   };
-}
-
-function guidGenerator() {
-    const S4 = () => {
-       return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
-    };
-
-    return (S4() + S4() + '-' + S4() + '-' + S4() + '-' + S4() + '-' + S4() + S4() + S4());
 }
 
 export function createTravel(destination, comments, startDate, endDate) {

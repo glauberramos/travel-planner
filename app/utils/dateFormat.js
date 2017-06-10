@@ -1,3 +1,4 @@
+/* eslint no-bitwise: 0 */
 export function formatDate(date) {
   return date.getFullYear() + '-' +
     ('0' + (date.getMonth() + 1)).slice(-2) + '-' +
@@ -33,4 +34,12 @@ export function checkIfNextMonth(date) {
   const currentMonth = now.getMonth() + 1;
 
   return currentMonth + 1 === month;
+}
+
+export function guidGenerator() {
+  const S4 = () => {
+     return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
+  };
+
+  return (S4() + S4() + '-' + S4() + '-' + S4() + '-' + S4() + '-' + S4() + S4() + S4());
 }
