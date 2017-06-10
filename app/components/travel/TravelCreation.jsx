@@ -1,15 +1,21 @@
+/* eslint react/jsx-no-bind: 0*/
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import styles from './travel.css';
-const cx = classNames.bind(styles);
 
-const ENTER_KEY_CODE = 13;
+const cx = classNames.bind(styles);
 
 export default class TravelCreation extends Component {
   constructor(props) {
     super(props);
-    this.state = { destination: '', comments: '', startDate: '', endDate: '' }
+    this.state = { destination: '', comments: '', startDate: '', endDate: '' };
+  }
+
+  onSave(event) {
+    event.preventDefault();
+    this.props.createTravel(this.state.destination, this.state.comments, this.state.startDate, this.state.endDate);
+    this.setState({ destination: '', comments: '', startDate: '', endDate: '' });
   }
 
   updateDestination(event) {
@@ -28,17 +34,11 @@ export default class TravelCreation extends Component {
     this.setState({ endDate: event.target.value });
   }
 
-  onSave(event) {
-    event.preventDefault();
-    this.props.createTravel(this.state.destination, this.state.comments, this.state.startDate, this.state.endDate);
-    this.setState({ destination: '', comments: '', startDate: '', endDate: '' });
-  }
-
   render() {
     return (
       <div className={cx('create-box')}>
         <h1 className={cx('header')}>Plan your next trip!</h1>
-        <form onSubmit={ this.onSave.bind(this) }>
+        <form onSubmit={this.onSave.bind(this)}>
           <input
             className={cx('input-create')}
             required
@@ -70,7 +70,7 @@ export default class TravelCreation extends Component {
       </div>
     );
   }
-};
+}
 
 TravelCreation.propTypes = {
   createTravel: PropTypes.func.isRequired

@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
+import classNames from 'classnames/bind';
 import UserCreation from './UserCreation';
 import UserList from './UserList';
 import { createUser, deleteUser, updateUser } from '../../actions/users';
-import { Link } from 'react-router';
 import { UserRoles } from '../../utils/userRoles';
-import classNames from 'classnames/bind';
 import styles from './user.css';
+
 const cx = classNames.bind(styles);
 
 class User extends Component {
@@ -15,16 +16,17 @@ class User extends Component {
     return (
       <div>
         { ((this.props.userRole === UserRoles.Manager) || (this.props.userRole === UserRoles.Admin)) ?
-          ( <div className={cx('container')}>
-              <UserCreation createUser={ this.props.createUser } />
-              <UserList users={ this.props.users }
-                deleteUser={ this.props.deleteUser }
-                updateUser={ this.props.updateUser } />
-            </div>
+          (<div className={cx('container')}>
+            <UserCreation createUser={this.props.createUser} />
+            <UserList
+              users={this.props.users}
+              deleteUser={this.props.deleteUser}
+              updateUser={this.props.updateUser} />
+          </div>
           ) : (
             <Link to="/trips">
               <button className={cx('button', 'primary')}>Manage Trips</button>
-            </Link> )
+            </Link>)
           }
       </div>
     );

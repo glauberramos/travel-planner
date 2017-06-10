@@ -1,16 +1,22 @@
+/* eslint react/jsx-no-bind: 0*/
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { UserRoles } from '../../utils/userRoles';
 import classNames from 'classnames/bind';
+import { UserRoles } from '../../utils/userRoles';
 import styles from './user.css';
-const cx = classNames.bind(styles);
 
-const ENTER_KEY_CODE = 13;
+const cx = classNames.bind(styles);
 
 export default class UserCreation extends Component {
   constructor(props) {
     super(props);
-    this.state = { email: '', role: 'user', password: '' }
+    this.state = { email: '', role: 'user', password: '' };
+  }
+
+  onSave(event) {
+    event.preventDefault();
+    this.props.createUser({ email: this.state.email, role: this.state.role, password: this.state.password });
+    this.setState({ email: '', role: 'user', password: '' });
   }
 
   updateEmail(event) {
@@ -25,23 +31,17 @@ export default class UserCreation extends Component {
     this.setState({ password: event.target.value });
   }
 
-  onSave(event) {
-    event.preventDefault();
-    this.props.createUser({ email: this.state.email, role: this.state.role, password: this.state.password });
-    this.setState({ email: '', role: 'user', password: '' });
-  }
-
   render() {
     const roleOptions = Object.keys(UserRoles).map((role) => {
       return (
-        <option key={role} value={ UserRoles[role] }>{ role }</option>
-      )
+        <option key={role} value={UserRoles[role]}>{role}</option>
+      );
     });
 
     return (
       <div className={cx('create-box')}>
         <h1 className={cx('header')}>Register users</h1>
-        <form onSubmit={ this.onSave.bind(this) }>
+        <form onSubmit={this.onSave.bind(this)}>
           <input
             className={cx('input-create')}
             placeholder="Email"
@@ -51,7 +51,7 @@ export default class UserCreation extends Component {
           <select
             className={cx('input-create')}
             onChange={this.updateRole.bind(this)}>
-            { roleOptions }
+            {roleOptions}
           </select>
           <input
             className={cx('input-create')}
@@ -68,7 +68,7 @@ export default class UserCreation extends Component {
       </div>
     );
   }
-};
+}
 
 UserCreation.propTypes = {
   createUser: PropTypes.func.isRequired

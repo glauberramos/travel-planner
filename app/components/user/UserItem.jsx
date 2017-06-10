@@ -1,3 +1,4 @@
+/* eslint react/jsx-no-bind: 0*/
 import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import React, { Component } from 'react';
@@ -21,7 +22,7 @@ export default class UserItem extends Component {
     this.props.deleteUser(this.props.id);
   }
 
-  onUpdate() {
+  onUpdate(event) {
     event.preventDefault();
     this.toggleEdit();
     this.props.updateUser(this.props.id,
@@ -56,17 +57,17 @@ export default class UserItem extends Component {
     });
 
     return (
-      <div className={cx('item', { editing: this.state.editing })}>
+      <div className={cx('item', {editing: this.state.editing})}>
         <div className={cx('info')}>
           <span>{this.state.email}</span>
           <span className={cx('role')}>{this.state.role}</span>
           <br />
-          <button className={cx('button', 'primary')} onClick={this.toggleEdit}>
+          <button className={cx('button', 'primary')} onClick={this.toggleEdit.bind(this)}>
             Edit
           </button>
         </div>
         <div className={cx('edit')}>
-          <form onSubmit={this.onUpdate}>
+          <form onSubmit={this.onUpdate.bind(this)}>
             <input
               className={cx('input', 'margin-right')}
               placeholder="email"
@@ -86,18 +87,14 @@ export default class UserItem extends Component {
               onChange={this.updatePassword}
               value={this.state.password} />
             <input type="submit" value="Save" className={cx('button', 'save')} />
-            <a className={cx('button', 'delete')} role="button" onClick={this.onDelete}>
-              Delete
-            </a>
-            <a className={cx('button', 'primary')} role="button" onClick={this.toggleEdit}>
-              Cancel
-            </a>
+            <input type="button" value="Delete" className={cx('button', 'delete')} role="button" onClick={this.onDelete.bind(this)} />
+            <input type="button" value="Cancel" className={cx('button', 'primary')} role="button" onClick={this.toggleEdit.bind(this)} />
           </form>
         </div>
       </div>
     );
   }
-};
+}
 
 UserItem.propTypes = {
   id: PropTypes.number.isRequired,
