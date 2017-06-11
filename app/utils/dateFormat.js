@@ -25,7 +25,7 @@ export function daysUntil(date) {
   const dateEnd = new Date(date.getFullYear(), date.getMonth(), date.getDate() + 1);
   const days = (dateEnd - now) / 1000 / 60 / 60 / 24;
 
-  return Math.round(days);
+  return Math.round(days) + 1;
 }
 
 export function checkIfNextMonth(date) {
