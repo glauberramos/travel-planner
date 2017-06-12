@@ -19,6 +19,9 @@ module.exports = {
     password: null,
     database: 'react_webpack_node_production',
     host: '127.0.0.1',
-    dialect: 'postgres'
+    dialect: 'postgres',
+    dialectOptions: {
+      ssl: true
+    }
   }
 };
