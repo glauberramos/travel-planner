@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
-import styles from './travel.css';
+import styles from '../travel/travel.css';
 
 const cx = classNames.bind(styles);
 

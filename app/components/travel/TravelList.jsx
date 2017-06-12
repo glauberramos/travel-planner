@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import TravelItem from './TravelItem';
-import styles from './travel.css';
+import styles from '../travel/travel.css';
 import { checkIfNextMonth } from '../../utils/dateFormat';
 
 const cx = classNames.bind(styles);

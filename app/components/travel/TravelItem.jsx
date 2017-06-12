@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import { formatDate, formatDateBeautifully, daysUntil } from '../../utils/dateFormat';
-import styles from './travel.css';
+import styles from '../travel/travel.css';
 import { UserRoles } from '../../utils/userRoles';
 
 const cx = classNames.bind(styles);

@@ -8,7 +8,7 @@ import TravelCreation from './TravelCreation';
 import TravelList from './TravelList';
 import { createTravel, deleteTravel, updateTravel } from '../../actions/travels';
 import { UserRoles } from '../../utils/userRoles';
-import styles from './travel.css';
+import styles from '../travel/travel.css';
 
 const cx = classNames.bind(styles);
 
