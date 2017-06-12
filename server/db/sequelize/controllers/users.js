@@ -77,7 +77,7 @@ export function add(req, res, next) {
       });
 
       return user.save().then(() => {
-        res.status(200).send('OK');
+        res.status(200).send('Added successfully');
       });
     }).catch(err =>
       next(err)
@@ -114,6 +114,8 @@ export function update(req, res) {
           console.log(err);
           res.status(500).send('We failed to save for some reason');
         });
+      } else {
+        res.status(404).send('Couldn\'t find user');
       }
     });
   } else {

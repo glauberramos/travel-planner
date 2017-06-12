@@ -37,7 +37,7 @@ export function add(req, res) {
     req.body.userId = req.user.id;
 
     Travel.create(req.body).then(() => {
-      res.status(200).send('OK');
+      res.status(201).send('Added successfully');
     }).catch((err) => {
       console.log(err);
       res.status(400).send(err);
