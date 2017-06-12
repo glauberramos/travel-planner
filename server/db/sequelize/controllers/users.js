@@ -77,7 +77,7 @@ export function add(req, res, next) {
       });
 
       return user.save().then(() => {
-        res.status(200).send('Added successfully');
+        res.status(201).send('Added successfully');
       });
     }).catch(err =>
       next(err)
