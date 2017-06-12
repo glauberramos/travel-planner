@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 import classNames from 'classnames/bind';
 import { connect } from 'react-redux';
 import { manualLogin, signUp, toggleLoginMode } from '../../actions/users';
-import styles from './login.css';
+import styles from './../../css/login.css';
 import { UserRoles } from '../../utils/userRoles';
 
 const cx = classNames.bind(styles);

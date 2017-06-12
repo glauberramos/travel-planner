@@ -8,7 +8,7 @@ import UserCreation from './UserCreation';
 import UserList from './UserList';
 import { createUser, deleteUser, updateUser } from '../../actions/users';
 import { UserRoles } from '../../utils/userRoles';
-import styles from './user.css';
+import styles from './../../css/user.css';
 
 const cx = classNames.bind(styles);
 

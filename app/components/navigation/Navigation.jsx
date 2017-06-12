@@ -5,7 +5,7 @@ import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import classNames from 'classnames/bind';
 import { logOut } from '../../actions/users';
-import styles from './navigation.css';
+import styles from './../../css/navigation.css';
 import { UserRoles } from '../../utils/userRoles';
 
 const cx = classNames.bind(styles);

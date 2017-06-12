@@ -2,7 +2,7 @@
 import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import React, { Component } from 'react';
-import styles from './user.css';
+import styles from './../../css/user.css';
 import { UserRoles } from '../../utils/userRoles';
 
 const cx = classNames.bind(styles);

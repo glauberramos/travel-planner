@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import { UserRoles } from '../../utils/userRoles';
-import styles from './user.css';
+import styles from './../../css/user.css';
 
 const cx = classNames.bind(styles);
 
