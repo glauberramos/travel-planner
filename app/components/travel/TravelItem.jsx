@@ -67,7 +67,7 @@ export default class TravelItem extends Component {
           <span className={cx('date')}>{ formatDateBeautifully(new Date(this.state.startDate)) } - { formatDateBeautifully(new Date(this.state.endDate)) }</span>
           <span className={cx('comments')}>{ this.state.comments }</span>
           {(this.props.userRole === UserRoles.Admin) ? (
-            <span className={cx('date')}>UserId: { this.props.userId }</span>
+            <span className={cx('date', 'userId')}>UserId: { this.props.userId }</span>
           ) : ''}
           <br />
           <button className={cx('button', 'primary')} onClick={this.toggleEdit.bind(this)}>
