@@ -26,4 +26,4 @@ initExpress(app);
 initRoutes(app);
 
 app.get('*', renderMiddleware);
-app.listen(app.get('port'));
+app.listen(process.env.PORT || 3000);
