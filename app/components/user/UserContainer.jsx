@@ -12,7 +12,7 @@ import styles from './../../css/user.css';
 
 const cx = classNames.bind(styles);
 
-class User extends Component {
+export class User extends Component {
   render() {
     return (
       <div>

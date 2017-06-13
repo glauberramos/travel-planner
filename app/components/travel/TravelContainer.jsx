@@ -12,7 +12,7 @@ import styles from './../../css/travel.css';
 
 const cx = classNames.bind(styles);
 
-class Travel extends Component {
+export class Travel extends Component {
   render() {
     return (
       <div>
